@@ -1,0 +1,207 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import { SITE } from "../data/site";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate } = post.data;
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  ...(updatedDate && { dateModified: updatedDate.toISOString() }),
+  url: new URL(Astro.url.pathname, Astro.site).href,
+  image: new URL("/og/og-default.png", Astro.site).href,
+  author: {
+    "@type": "Person",
+    "@id": `${SITE.url}/#person`,
+    name: SITE.name,
+    url: SITE.url,
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  publishedTime={pubDate}
+  updatedTime={updatedDate}
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+    is:inline
+  />
+  <article class="container post">
+    <header class="post-header">
+      <p class="label">
+        <a href="/blog/">Blog</a>
+      </p>
+      <h1>{title}</h1>
+      <p class="dateline">
+        <time datetime={pubDate.toISOString().slice(0, 10)}>
+          {formatDate(pubDate)}
+        </time>
+        {
+          updatedDate && (
+            <>
+              <span aria-hidden="true">·</span> Updated{" "}
+              <time datetime={updatedDate.toISOString().slice(0, 10)}>
+                {formatDate(updatedDate)}
+              </time>
+            </>
+          )
+        }
+      </p>
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding-block-start: clamp(2rem, 6vw, 4rem);
+  }
+
+  .post-header {
+    max-width: var(--width-prose);
+    margin-inline: auto;
+    margin-block-end: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .label a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .label a:hover {
+    color: var(--color-ink);
+  }
+
+  h1 {
+    font-size: clamp(1.9rem, 5.5vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-block-end: 0.75rem;
+  }
+
+  .dateline {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+  }
+
+  .prose {
+    max-width: var(--width-prose);
+    margin-inline: auto;
+  }
+
+  /* Prose typography for rendered MDX */
+  .prose :global(h2) {
+    font-size: 1.5rem;
+    margin-block: 2.5rem 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .prose :global(h3) {
+    font-size: 1.1875rem;
+    margin-block: 2rem 0.75rem;
+  }
+
+  .prose :global(p) {
+    margin-block-end: 1.25rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-inline-start: 1.5rem;
+    margin-block-end: 1.25rem;
+  }
+
+  .prose :global(li) {
+    margin-block-end: 0.375rem;
+  }
+
+  .prose :global(hr) {
+    border: 0;
+    border-block-start: 1px solid var(--color-line);
+    margin-block: 2.5rem;
+  }
+
+  .prose :global(blockquote) {
+    border-inline-start: 3px solid var(--color-line);
+    padding-inline-start: 1.25rem;
+    color: var(--color-muted);
+    margin-block-end: 1.25rem;
+  }
+
+  .prose :global(img) {
+    border-radius: var(--radius-box);
+    margin-block: 1.5rem;
+    border: 1px solid var(--color-line);
+  }
+
+  .prose :global(code) {
+    font-size: 0.9em;
+  }
+
+  .prose :global(:not(pre) > code) {
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: 0.25rem;
+    padding: 0.1em 0.35em;
+  }
+
+  .prose :global(pre) {
+    padding: 1.25rem;
+    border-radius: var(--radius-box);
+    border: 1px solid var(--color-line);
+    overflow-x: auto;
+    margin-block-end: 1.25rem;
+  }
+
+  .prose :global(figure) {
+    margin-block: 1.5rem;
+  }
+
+  .prose :global(figcaption) {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    text-align: center;
+    margin-block-start: 0.5rem;
+  }
+
+  .prose :global(table) {
+    border-collapse: collapse;
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    margin-block-end: 1.25rem;
+  }
+
+  .prose :global(th),
+  .prose :global(td) {
+    border: 1px solid var(--color-line);
+    padding: 0.5rem 0.75rem;
+    text-align: start;
+  }
+</style>

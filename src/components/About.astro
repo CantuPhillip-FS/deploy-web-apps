@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/phillip-cantu-01.jpeg";
+---
+
+<section class="section container" id="about" aria-labelledby="about-heading">
+  <h2 class="label" id="about-heading">About</h2>
+  <div class="grid">
+    <div class="text">
+      <p class="lede">
+        I'm a full-stack developer from Arizona and a U.S. Army veteran — the
+        discipline came first, the code came after.
+      </p>
+      <p>
+        I got my start at 4Geeks Academy's Full-Stack + AI bootcamp, sharpened
+        it during Flatiron School's AI Engineering apprenticeship, and I'm
+        finishing a Web Development degree at Full Sail University (expected
+        February 2027). Along the way I've shipped production apps across the
+        stack: React and React Native on the front, Node and Python on the
+        back.
+      </p>
+      <p>
+        I care about the details that make software feel good — fast loads,
+        clean types, and code the next engineer can actually read. I'm looking
+        to bring that to a team building things that matter.
+      </p>
+    </div>
+    <div class="photo">
+      <Image
+        src={portrait}
+        alt="Phillip Cantu, full-stack developer"
+        width={640}
+        densities={[1, 2]}
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .lede {
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    margin-block-end: 1.25rem;
+  }
+
+  .text p + p {
+    margin-block-start: 1rem;
+  }
+
+  .text p:not(.lede) {
+    color: var(--color-muted);
+    max-width: 58ch;
+  }
+
+  .photo img {
+    width: 100%;
+    max-width: 22rem;
+    border-radius: var(--radius-box);
+    filter: grayscale(1);
+  }
+
+  @media (min-width: 48em) {
+    .grid {
+      grid-template-columns: 1.6fr 1fr;
+      align-items: start;
+    }
+
+    .photo {
+      justify-self: end;
+    }
+  }
+</style>

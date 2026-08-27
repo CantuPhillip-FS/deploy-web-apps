@@ -1,0 +1,118 @@
+---
+import ContactForm from "./islands/ContactForm";
+import { SITE } from "../data/site";
+---
+
+<section class="section container" id="contact" aria-labelledby="contact-heading">
+  <h2 class="label" id="contact-heading">Contact</h2>
+  <div class="grid">
+    <div class="pitch">
+      <p class="big">Let's build something.</p>
+      <p class="sub">
+        Open to full-time software engineering roles — remote or Arizona.
+        Prefer email? Reach me directly at <a href={`mailto:${SITE.email}`}
+          >{SITE.email}</a
+        >.
+      </p>
+    </div>
+    <ContactForm client:visible />
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .big {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-block-end: 1rem;
+  }
+
+  .sub {
+    color: var(--color-muted);
+    max-width: 40ch;
+  }
+
+  @media (min-width: 48em) {
+    .grid {
+      grid-template-columns: 1fr 1.2fr;
+      align-items: start;
+    }
+  }
+
+  /* Island internals (Solid component renders these classes) */
+  :global(.contact-form) {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  :global(.contact-form .field) {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  :global(.contact-form label) {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
+  :global(.contact-form input),
+  :global(.contact-form textarea) {
+    background: transparent;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-box);
+    padding: 0.7em 0.9em;
+    width: 100%;
+  }
+
+  :global(.contact-form input:focus-visible),
+  :global(.contact-form textarea:focus-visible) {
+    border-color: var(--color-ink);
+    outline: none;
+  }
+
+  :global(.contact-form textarea) {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  :global(.contact-form button[disabled]) {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
+  :global(.contact-form .hp) {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+  }
+
+  :global(.form-status) {
+    min-height: 1.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+  }
+
+  :global(.form-error) {
+    color: var(--color-error);
+  }
+
+  :global(.form-success) {
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-box);
+    padding: 2rem;
+    background: var(--color-panel);
+  }
+
+  :global(.form-success-title) {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-block-end: 0.5rem;
+  }
+</style>

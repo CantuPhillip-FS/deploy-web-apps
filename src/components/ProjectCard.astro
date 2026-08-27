@@ -1,0 +1,106 @@
+---
+import type { Project } from "../data/projects";
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const number = String(index + 1).padStart(2, "0");
+---
+
+<li class="project">
+  <div class="head">
+    <span class="number" aria-hidden="true">{number}</span>
+    <h3>{project.name}</h3>
+    {project.note && <span class="note">{project.note}</span>}
+  </div>
+  <p class="blurb">{project.blurb}</p>
+  <ul class="tech" aria-label="Technologies used">
+    {project.tech.map((t) => <li>{t}</li>)}
+  </ul>
+  <p class="links">
+    <a href={project.repo} target="_blank" rel="noopener noreferrer">
+      GitHub <span aria-hidden="true">&#8599;</span>
+    </a>
+    {
+      project.live && (
+        <a href={project.live} target="_blank" rel="noopener noreferrer">
+          Live <span aria-hidden="true">&#8599;</span>
+        </a>
+      )
+    }
+  </p>
+</li>
+
+<style>
+  .project {
+    padding-block: 2.5rem;
+    border-block-start: 1px solid var(--color-line);
+  }
+
+  .head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .number {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    color: var(--color-soft);
+  }
+
+  h3 {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .note {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    padding: 0.2em 0.8em;
+  }
+
+  .blurb {
+    color: var(--color-muted);
+    max-width: 62ch;
+    margin-block-start: 0.75rem;
+  }
+
+  .tech {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin-block-start: 1rem;
+  }
+
+  .tech li {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-soft);
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    margin-block-start: 1.25rem;
+    font-family: var(--font-ui);
+  }
+
+  .links a {
+    color: var(--color-ink);
+  }
+</style>

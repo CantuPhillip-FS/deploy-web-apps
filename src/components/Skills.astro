@@ -1,0 +1,50 @@
+---
+import { SKILLS } from "../data/skills";
+---
+
+<section class="section container" id="skills" aria-labelledby="skills-heading">
+  <h2 class="label" id="skills-heading">Toolbox</h2>
+  <div class="groups">
+    {
+      SKILLS.map((group) => (
+        <div class="group">
+          <h3>{group.title}</h3>
+          <ul>
+            {group.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .groups {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  }
+
+  h3 {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-soft);
+    margin-block-end: 0.75rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    font-weight: 600;
+    font-size: 1.0625rem;
+    padding-block: 0.2rem;
+  }
+</style>

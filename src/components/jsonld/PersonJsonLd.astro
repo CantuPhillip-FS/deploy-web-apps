@@ -1,0 +1,30 @@
+---
+import { SITE } from "../../data/site";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE.url}/#person`,
+      name: SITE.name,
+      url: SITE.url,
+      email: `mailto:${SITE.email}`,
+      jobTitle: SITE.role,
+      description: SITE.description,
+      image: `${SITE.url}/og/og-default.png`,
+      sameAs: [SITE.socials.github, SITE.socials.linkedin, SITE.socials.x],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE.url}/#website`,
+      url: SITE.url,
+      name: SITE.name,
+      description: SITE.description,
+      publisher: { "@id": `${SITE.url}/#person` },
+    },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
