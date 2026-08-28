@@ -9,9 +9,19 @@ export default function ContactForm() {
 
   onMount(() => {
     setStartedAt(Date.now());
-    // No-JS fallback path: the endpoint 303-redirects native posts to /?sent=1#contact
-    if (new URLSearchParams(window.location.search).has("sent")) {
+    // No-JS fallback paths: the endpoint 303-redirects native posts to
+    // /?sent=1#contact on success or /?error=<code>#contact on failure.
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("sent")) {
       setStatus("success");
+    } else if (params.has("error")) {
+      const messages: Record<string, string> = {
+        validation: "Something was off with the form — please check the fields and try again.",
+        rate: "Too many messages — please try again later.",
+        send: "Email failed to send. Please try again, or email me directly.",
+      };
+      setStatus("error");
+      setErrorMsg(messages[params.get("error") ?? ""] ?? messages.send!);
     }
   });
 
@@ -53,11 +63,18 @@ export default function ContactForm() {
     <Show
       when={status() !== "success"}
       fallback={
-        <div class="form-success" role="status">
+        <div
+          class="form-success"
+          role="status"
+          tabindex={-1}
+          // Focus the panel when it replaces the form: restores a keyboard
+          // focus point and makes screen readers announce the confirmation.
+          ref={(el) => queueMicrotask(() => el.focus())}
+        >
           <p class="form-success-title">Message sent.</p>
           <p>
             Thanks for reaching out — I'll get back to you soon. A confirmation
-            copy is on its way to your inbox.
+            is on its way to your inbox.
           </p>
         </div>
       }

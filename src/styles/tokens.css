@@ -4,7 +4,8 @@
   --color-bg: oklch(0.958 0.006 96);
   --color-ink: oklch(0.21 0.006 96);
   --color-muted: oklch(0.45 0.008 96);
-  --color-soft: oklch(0.58 0.008 96);
+  /* 0.52 lightness = 4.87:1 on --color-bg; 0.54+ fails WCAG AA for small text */
+  --color-soft: oklch(0.52 0.008 96);
   --color-line: oklch(0.87 0.006 96);
   --color-panel: oklch(0.935 0.006 96);
   --color-pill: oklch(0.27 0.01 96);

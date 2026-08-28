@@ -21,7 +21,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
       </p>
     </header>
     <ul class="posts">
-      {posts.map((post) => <PostCard post={post} />)}
+      {posts.map((post) => <PostCard post={post} headingLevel="h2" />)}
     </ul>
   </div>
 </BaseLayout>

@@ -82,12 +82,13 @@ import { SITE } from "../data/site";
   }
 
   /* One line, both words pushed to the container edges; "PHILLIP CANTU" measures
-     ~6.9em at this weight/tracking, so 12.8vw tracks the container width safely */
+     ~6.9em at this weight/tracking. 12.4vw (not 12.8) leaves room for a classic
+     scrollbar, which vw units include but the container layout does not. */
   @media (min-width: 48em) {
     h1 {
       flex-direction: row;
       justify-content: space-between;
-      font-size: clamp(3.7rem, 12.8vw, 8.9rem);
+      font-size: clamp(3.7rem, 12.4vw, 8.9rem);
     }
   }
 </style>

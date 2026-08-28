@@ -131,7 +131,8 @@ const links = [
       text-transform: uppercase;
       color: var(--color-muted);
       writing-mode: vertical-rl;
-      margin-block-end: 1.5rem;
+      /* physical margin: in vertical-rl, margin-block-end would flip to margin-left */
+      margin-bottom: 1.5rem;
     }
   }
 </style>

@@ -9,6 +9,10 @@ export default defineConfig({
   trailingSlash: "ignore",
   integrations: [solidJs(), mdx(), sitemap()],
   adapter: vercel(),
+  image: {
+    // Responsive images everywhere: MDX/markdown images get srcset + sizes
+    layout: "constrained",
+  },
   markdown: {
     shikiConfig: {
       theme: "github-light",
