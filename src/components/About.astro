@@ -1,0 +1,83 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/phillip-cantu-01.jpeg";
+---
+
+<section class="section container" id="about" aria-labelledby="about-heading">
+  <h2 class="label" id="about-heading">About</h2>
+  <div class="grid">
+    <div class="text">
+      <p class="lede">
+        I'm a full-stack developer from Arizona and a U.S. Army veteran — the
+        discipline came first, the code came after.
+      </p>
+      <p>
+        I got my start at 4Geeks Academy's Full-Stack + AI bootcamp, earned a
+        spot in Flatiron School's paid engineering apprenticeship, and was
+        recruited away by Hgraph two months in — where I grew from apprentice
+        to junior engineer shipping enterprise SSO, a streaming AI product,
+        and analytics dashboards across a 16-service platform.
+      </p>
+      <p>
+        I'm finishing my Web Development degree at Full Sail University
+        (December 2026) alongside Flatiron's AI &amp; Data Science program
+        (April 2027).
+      </p>
+      <p>
+        I care about the details that make software feel good: fast loads,
+        clean types, and code that the next engineer can actually read. I'm looking
+        to bring that to a team building things that matter.
+      </p>
+    </div>
+    <div class="photo">
+      <Image
+        src={portrait}
+        alt="Phillip Cantu, full-stack developer"
+        width={704}
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .lede {
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    margin-block-end: 1.25rem;
+  }
+
+  .text p + p {
+    margin-block-start: 1rem;
+  }
+
+  .text p:not(.lede) {
+    color: var(--color-muted);
+    max-width: 58ch;
+  }
+
+  .photo img {
+    width: 100%;
+    max-width: 22rem;
+    border-radius: var(--radius-box);
+    filter: grayscale(1);
+  }
+
+  @media (min-width: 48em) {
+    .grid {
+      grid-template-columns: 1.6fr 1fr;
+      align-items: start;
+    }
+
+    .photo {
+      justify-self: end;
+    }
+  }
+</style>

@@ -1,0 +1,1358 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Phil's Role at Hgraph";
+const description =
+  "Eleven and a half weeks at Hgraph: 143 merged pull requests, 135 commits on main, and the work record behind a move from Software Engineer Apprentice to Junior Software Engineer.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="record">
+
+
+<nav class="nav" aria-label="Sections">
+  <div class="nav__inner">
+    <span class="nav__mark">Phillip Cantu <span>· Hgraph</span></span>
+    <div class="nav__links">
+      <a class="nav__link" href="#record">The record</a>
+      <a class="nav__link" href="#arc">The arc</a>
+      <a class="nav__link" href="#sso">SSO</a>
+      <a class="nav__link" href="#agent">Agent v2</a>
+      <a class="nav__link" href="#projects">Projects</a>
+      <a class="nav__link" href="#growth">Growth</a>
+      <a class="nav__link" href="#stack">Stack</a>
+      <a class="nav__link" href="#open">Open work</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="shell hero__grid">
+    <div class="hero__meta">
+      <div class="hero__metarow">
+        <span class="eyebrow">Company</span>
+        <span class="hero__metaval">Hgraph</span>
+      </div>
+      <div class="hero__metarow">
+        <span class="eyebrow">Repository</span>
+        <span class="hero__metaval">hgraph-io/hg-core</span>
+      </div>
+      <div class="hero__metarow">
+        <span class="eyebrow">Window</span>
+        <span class="hero__metaval num">8 Jun – 27 Aug 2026</span>
+      </div>
+      <div class="hero__metarow">
+        <span class="eyebrow">Domain</span>
+        <span class="hero__metaval">Hedera &amp; EVM data infrastructure</span>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow">Work record</span>
+      <h1 class="hero__title">Phil&rsquo;s role @ Hgraph.com</h1>
+      <p class="hero__role">
+        <span class="from">Software Engineer Apprentice</span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+        <span>Junior Software Engineer</span>
+      </p>
+      <p class="hero__lede">
+        I work at the layer where a change is hard to undo: Postgres migrations and row-level-security
+        predicates, GraphQL resolvers and ClickHouse query plans, a streaming AI backend, and a shared
+        React library six applications depend on.
+      </p>
+      <p class="hero__sub">
+        In under three months at Hgraph I landed 143 merged pull requests and 135 commits on
+        <code>main</code> across 16 services and packages. What changed over those weeks was not the
+        volume &mdash; it was the blast radius. Every number and claim on this page is drawn from the
+        git history, the GitHub API, and the Linear issue tracker. Nothing here is estimated.
+      </p>
+
+      <div class="stats" role="list" aria-label="Headline figures">
+        <div class="stat" role="listitem">
+          <span class="stat__val num" data-count="143">143</span>
+          <span class="stat__label">Pull requests merged<br>(151 opened)</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat__val num" data-count="135">135</span>
+          <span class="stat__label">Commits landed on <code>main</code></span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat__val num" data-count="16">16</span>
+          <span class="stat__label">Services &amp; packages touched</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat__val num" data-count="179">179</span>
+          <span class="stat__label">Linear issues assigned<br>(141 closed as Done)</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat__val num" data-count="1109">1,109</span>
+          <span class="stat__label">Distinct files changed</span>
+        </div>
+        <div class="stat" role="listitem">
+          <span class="stat__val num">~68.6k</span>
+          <span class="stat__label">Lines added<br>(~13.9k removed)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="sec" id="record">
+  <div class="shell">
+    <div class="sec__head">
+      <span class="eyebrow">01 &middot; Measured</span>
+      <div>
+        <h2 class="sec__title">The record, and what it does and doesn&rsquo;t prove</h2>
+        <p class="sec__intro">
+          Twelve weeks of merged work, week by week. The useful signal here is not the peak &mdash; it is
+          that the output held steady while the difficulty of the work went up, and that the two heaviest
+          projects landed in the quietest weeks.
+        </p>
+      </div>
+    </div>
+
+    <div class="sec__body">
+      <div class="sec__rail">
+        <div class="railitem">
+          <span class="railitem__k">Contribution share</span>
+          <span class="railitem__v num">135 of the 582 commits landed on <code>main</code> during my tenure &mdash; 23%, third of seven contributors</span>
+        </div>
+        <div class="railitem">
+          <span class="railitem__k">Tracked issues</span>
+          <span class="railitem__v num">127 distinct Linear IDs referenced in commit messages</span>
+        </div>
+        <div class="railitem">
+          <span class="railitem__k">PR shape</span>
+          <span class="railitem__v num">111 of 143 merged inside 24 hours &mdash; small, single-purpose, reviewable</span>
+        </div>
+        <div class="railitem">
+          <span class="railitem__k">Largest single PR</span>
+          <span class="railitem__v num">+10,756 lines / 164 files &mdash; the marketing site, from zero</span>
+        </div>
+      </div>
+
+      <div class="sec__main">
+        <div class="chart reveal" id="chart">
+          <div class="chart__legend">
+            <span class="chart__key"><span class="chart__swatch chart__swatch--a" aria-hidden="true"></span> Commits on <code>main</code></span>
+            <span class="chart__key"><span class="chart__swatch chart__swatch--b" aria-hidden="true"></span> Pull requests opened</span>
+          </div>
+          <div class="chart__plot" id="plot" aria-label="Weekly commits and pull requests, 8 June to 24 August 2026">
+          <div class="week" tabindex="0" role="group" aria-label="Week of Jun 8: 9 commits, 14 pull requests">
+            <span class="week__tip">Jun 8 &mdash; 9 commits &middot; 14 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:40.9%" data-target="40.9%"></div>
+              <div class="bar bar--b" style="height:63.6%" data-target="63.6%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Jun 15: 10 commits, 11 pull requests">
+            <span class="week__tip">Jun 15 &mdash; 10 commits &middot; 11 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:45.5%" data-target="45.5%"></div>
+              <div class="bar bar--b" style="height:50.0%" data-target="50.0%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Jun 22: 11 commits, 15 pull requests">
+            <span class="week__tip">Jun 22 &mdash; 11 commits &middot; 15 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:50.0%" data-target="50.0%"></div>
+              <div class="bar bar--b" style="height:68.2%" data-target="68.2%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Jun 29: 12 commits, 9 pull requests">
+            <span class="week__tip">Jun 29 &mdash; 12 commits &middot; 9 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:54.5%" data-target="54.5%"></div>
+              <div class="bar bar--b" style="height:40.9%" data-target="40.9%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Jul 6: 9 commits, 14 pull requests">
+            <span class="week__tip">Jul 6 &mdash; 9 commits &middot; 14 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:40.9%" data-target="40.9%"></div>
+              <div class="bar bar--b" style="height:63.6%" data-target="63.6%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Jul 13: 21 commits, 19 pull requests">
+            <span class="week__tip">Jul 13 &mdash; 21 commits &middot; 19 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:95.5%" data-target="95.5%"></div>
+              <div class="bar bar--b" style="height:86.4%" data-target="86.4%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Jul 20: 12 commits, 10 pull requests">
+            <span class="week__tip">Jul 20 &mdash; 12 commits &middot; 10 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:54.5%" data-target="54.5%"></div>
+              <div class="bar bar--b" style="height:45.5%" data-target="45.5%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Jul 27: 19 commits, 21 pull requests">
+            <span class="week__tip">Jul 27 &mdash; 19 commits &middot; 21 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:86.4%" data-target="86.4%"></div>
+              <div class="bar bar--b" style="height:95.5%" data-target="95.5%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Aug 3: 8 commits, 7 pull requests">
+            <span class="week__tip">Aug 3 &mdash; 8 commits &middot; 7 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:36.4%" data-target="36.4%"></div>
+              <div class="bar bar--b" style="height:31.8%" data-target="31.8%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Aug 10: 8 commits, 7 pull requests">
+            <span class="week__tip">Aug 10 &mdash; 8 commits &middot; 7 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:36.4%" data-target="36.4%"></div>
+              <div class="bar bar--b" style="height:31.8%" data-target="31.8%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Aug 17: 7 commits, 9 pull requests">
+            <span class="week__tip">Aug 17 &mdash; 7 commits &middot; 9 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:31.8%" data-target="31.8%"></div>
+              <div class="bar bar--b" style="height:40.9%" data-target="40.9%"></div>
+            </div>
+          </div>
+          <div class="week" tabindex="0" role="group" aria-label="Week of Aug 24: 9 commits, 7 pull requests">
+            <span class="week__tip">Aug 24 &mdash; 9 commits &middot; 7 PRs</span>
+            <div class="week__bars">
+              <div class="bar bar--a" style="height:40.9%" data-target="40.9%"></div>
+              <div class="bar bar--b" style="height:31.8%" data-target="31.8%"></div>
+            </div>
+          </div>
+          </div>
+          <div class="chart__axis" id="axis" aria-hidden="true"><span>Jun 8</span><span>Jun 15</span><span>Jun 22</span><span>Jun 29</span><span>Jul 6</span><span>Jul 13</span><span>Jul 20</span><span>Jul 27</span><span>Aug 3</span><span>Aug 10</span><span>Aug 17</span><span>Aug 24</span></div>
+          <p class="chart__note">
+            Week beginning, Mondays. Commit counts are squash-merge commits on <code>main</code>, so one
+            commit is one reviewed unit of work; the finer-grained figure across all feature branches is 174.
+          </p>
+        </div>
+
+        <div class="prose">
+          <p>
+            <strong>The honest caveat, before anyone does the division.</strong> 143 pull requests and
+            ~68,600 added lines in eleven and a half weeks reads as AI-assisted, and it partly is &mdash;
+            Hgraph builds with Claude Code in the loop. The line count also includes generated output:
+            Supabase and GraphQL codegen, lockfile churn, and a single 10,756-line marketing-site drop.
+            The number worth judging me on is not the volume; it is <em>what</em> the changes were allowed
+            to touch, which is what the rest of this page is about.
+          </p>
+          <p>
+            I have also left the review statistics off this page on purpose. GitHub will tell you I am
+            listed as reviewer on 82 pull requests, but 80 of those are my own. The honest count of other
+            engineers&rsquo; pull requests I formally reviewed is two. Reviewing other people&rsquo;s code
+            is the clearest gap in this record, and it is the first thing I want more of in my next role.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="arc">
+  <div class="shell">
+    <div class="sec__head">
+      <span class="eyebrow">02 &middot; Trajectory</span>
+      <div>
+        <h2 class="sec__title">Apprentice to Junior, in the shape of the work</h2>
+        <p class="sec__intro">
+          The clearest way to read this is by the dates. On 9 June my merged work was two buttons on one
+          page of one app. On 11 August it was a Postgres function composed into every row-level-security
+          policy that tests organization membership. These are the five stages in between; the ordering is
+          chronological because the scope genuinely escalated in that order.
+        </p>
+      </div>
+    </div>
+
+    <div class="arc">
+
+      <article class="stage reveal">
+        <div class="stage__meta">
+          <span class="stage__when num">Jun 2026 &middot; wk 1&ndash;2</span>
+          <span class="stage__level">Apprentice<br>Supervised components</span>
+        </div>
+        <div>
+          <h3 class="stage__title">Narrow tickets, one service, someone else&rsquo;s seam</h3>
+          <p class="stage__what">
+            Single-page, single-layer tickets scoped by someone else, against APIs and a component library
+            other people defined. No cross-service surface and nothing another engineer depended on.
+          </p>
+          <ul class="stage__list">
+            <li>PR #1232, first commit on <code>main</code> 9 June: refresh buttons on the Usage page metrics and RPS chart, +75/&minus;52.</li>
+            <li>PR #1254: a half-filled trailing time bucket was making live traffic look like it had collapsed. Fixed in the chart&rsquo;s own hook rather than the shared resolver, because the resolver had other consumers &mdash; the first time I picked a layer for a reason.</li>
+            <li>Early design-system tickets (#1246, #1250, #1251): a link font default, a ghost <code>IconButton</code>, removing a Button variant.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="stage reveal">
+        <div class="stage__meta">
+          <span class="stage__when num">Jun &ndash; Jul 2026</span>
+          <span class="stage__level">Vertical ownership<br>One engineer, every layer</span>
+        </div>
+        <div>
+          <h3 class="stage__title">A whole customer-facing feature, top to bottom</h3>
+          <p class="stage__what">
+            Handed the API Usage dashboard and carried it through every layer myself: ClickHouse SQL and a
+            DDL migration, the GraphQL resolvers in <code>services/api</code>, and the React UI in
+            <code>services/app</code>. 30 Linear issues, roughly 28 merged pull requests. The step up is
+            that nobody handed me a seam &mdash; I chose the metric enums, the pagination contract, and the
+            bucketing rules.
+          </p>
+          <ul class="stage__list">
+            <li>PR #1304: the milestone-one dashboard, +5,160/&minus;777 across 57 files.</li>
+            <li>PRs #1384 / #1394 / #1407: cursor-paginated request logs shipped as three ordered PRs &mdash; additive resolver, then the UI migration, then deleting the dead offset resolver (+0/&minus;175).</li>
+            <li>PRs #1447 / #1440: GraphQL errors return HTTP 200, so <code>status_code</code> alone never saw them. Added a join to <code>analytics.graphql_operations</code> and an error-type grouping that partitions the failed set with no double-counting.</li>
+            <li>ClickHouse migration 008: <code>bloom_filter</code> skip indexes on <code>org_id</code> and <code>user_id</code>, because the table is ordered by <code>(api_key_id, timestamp)</code> and tenant-scoped filters were scanning every granule.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="stage reveal">
+        <div class="stage__meta">
+          <span class="stage__when num">Jul 2026</span>
+          <span class="stage__level">Producer side<br>Other engineers depend on it</span>
+        </div>
+        <div>
+          <h3 class="stage__title">Publishing the shared library instead of consuming it</h3>
+          <p class="stage__what">
+            Moved from using <code>@hgraph-io/design-system</code> as one of six apps to publishing it:
+            21 component pull requests, 10 releases cut including the library&rsquo;s first
+            <code>v1.0.0</code>, and consumer migrations app by app. This is the first work where my
+            mistake breaks someone else&rsquo;s build.
+          </p>
+          <ul class="stage__list">
+            <li>10 releases cut, <code>v1.0.0</code> (#1253) through <code>v1.22.0</code> (#1848); 37 of my commits touch the package; its test suite went from 386 cases at 1.0.0 to 514.</li>
+            <li><code>v1.0.0</code> removed a beta entry point, a Button variant, nine colour-math helpers and two hooks &mdash; each with a documented replacement or migration note.</li>
+            <li><code>CodePanel</code> shipped behind a separate <code>/code</code> entry point (#1484) so the four consumers that never install Monaco stay Monaco-free, verified against the built bundle.</li>
+            <li>Introduced one class-merging convention repo-wide: 42 component files onto a <code>cn</code> helper (#1578), then 62 call sites in the app (#1710), then a lint guard landed last so nothing could regress behind me.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="stage reveal">
+        <div class="stage__meta">
+          <span class="stage__when num">Jul &ndash; Aug 2026</span>
+          <span class="stage__level">Repo-wide programs<br>Production failure modes</span>
+        </div>
+        <div>
+          <h3 class="stage__title">Migrations, quality gates, and retiring a live key format</h3>
+          <p class="stage__what">
+            Took a dependency audit delegated to me and turned it into a five-issue program, rebuilt the
+            repo&rsquo;s commit gates, refactored the Taskfile that deploys five hosts, and ran a staged
+            retirement of an API key format that was live in production.
+          </p>
+          <ul class="stage__list">
+            <li>Apollo Server 4&rarr;5 ahead of end-of-life (#1452), React 18.3&rarr;19.2 across eight packages (#1519, #1534), react-router 6&rarr;7 across 58 files (#1532), TypeScript 5.6&rarr;5.9, recharts 2&rarr;3.</li>
+            <li>PR #1528: production charts silently lost their axes, grid and tooltips under React 19. recharts 2.15.4 flattens fragment children through <code>react-is@18</code>, which does not recognise React 19&rsquo;s element type &mdash; so everything inside a fragment was dropped. Hotfixed, then upgraded to recharts 3 to retire the bug class.</li>
+            <li>PR #1308: split a ~700-line pre-commit hook into pre-commit static gates and pre-push unit suites, with shared logic factored out. PR #1576: gitleaks secret scanning on the staged diff plus a pinned CI job.</li>
+            <li>PR #1708: collapsed five drifted compose dispatchers into one, and made the six CI-deployed services refuse a local <code>task up</code> &mdash; which on the app VM could otherwise place a shadow container on the production network.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="stage reveal">
+        <div class="stage__meta">
+          <span class="stage__when num">Aug 2026</span>
+          <span class="stage__level">Junior Software Engineer<br>Two concurrent flagships</span>
+        </div>
+        <div>
+          <h3 class="stage__title">Two multi-service projects with real security boundaries</h3>
+          <p class="stage__what">
+            Two projects at once, each spanning several codebases, each with a security or cost boundary
+            rather than a feature surface. Enterprise SAML single sign-on, and a full rebuild of
+            hgraph.ai&rsquo;s AI agent. Both are written up in full below.
+          </p>
+          <ul class="stage__list">
+            <li>SAML SSO: four Postgres migrations, an organization boundary enforced in row-level security <em>and</em> in the GraphQL layer, three containment triggers, an admin provisioning endpoint, and the customer-facing configuration guide. Sole author on all ten pull requests.</li>
+            <li>Agent v2: a Server-Sent-Events chat service, a thread store under row-level security, server-side credential isolation, org-scoped spend ceilings, multi-chain inference, and inline chart / table / entity rendering.</li>
+            <li>Both delivered while the weekly commit count went <em>down</em> &mdash; August&rsquo;s 32 commits contain the two largest non-marketing pull requests of my tenure.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="sso">
+  <div class="shell">
+    <div class="sec__head">
+      <span class="eyebrow">03 &middot; Flagship</span>
+      <div>
+        <h2 class="sec__title">Enterprise SAML single sign-on</h2>
+        <p class="sec__intro">
+          Enterprise prospects treated single sign-on as table stakes, and one enterprise customer needed
+          their team signing into the Hgraph dashboard through their own Okta. I designed and built the
+          whole capability &mdash; ten pull requests, sole author on every one, reaching seven areas of the
+          monorepo. Released to production on 13 August 2026.
+        </p>
+      </div>
+    </div>
+
+    <div class="sec__body">
+      <div class="sec__rail">
+        <div class="railitem"><span class="railitem__k">Linear</span><span class="railitem__v">Project <em>Okta SSO</em> &mdash; project lead, author of all 14 issues</span></div>
+        <div class="railitem"><span class="railitem__k">Pull requests</span><span class="railitem__v num">#1721 · #1738 · #1751 · #1763 · #1775 · #1776 · #1823 · #1849 · #1860 &mdash; sole author</span></div>
+        <div class="railitem"><span class="railitem__k">Migrations</span><span class="railitem__v num">077, 078, 079, 081</span></div>
+        <div class="railitem"><span class="railitem__k">Tests</span><span class="railitem__v num">67 SSO integration cases against a real Postgres, plus 9 unit cases</span></div>
+        <div class="railitem"><span class="railitem__k">Released</span><span class="railitem__v num">api-v2.11.1 / app-v2.43.1, 13 Aug 2026</span></div>
+      </div>
+
+      <div class="sec__main">
+        <article class="case">
+          <div class="case__flag">
+            <span class="case__tag">Delivered</span>
+            <span class="case__span num">HG-3333 &rarr; HG-3389 &middot; 3 Aug &ndash; 25 Aug 2026</span>
+          </div>
+          <h3 class="case__title">One predicate, and every policy inherits the boundary</h3>
+          <p class="case__one">
+            The design decision I am proudest of is where the guarantee lives. Enforcement is not in a
+            controller and not at account creation &mdash; it is a single Postgres function composed into
+            the membership predicates, so every row-level-security policy that already tested
+            &ldquo;is this user in this org&rdquo; inherited an SSO boundary without being rewritten.
+          </p>
+
+          <div class="flow" aria-label="Sign-in flow">
+            <div class="flow__step"><span class="flow__n num">01</span><span class="flow__t">Work email</span><span class="flow__d">Typed at the login form; the SSO call itself doubles as the domain-capture probe, so no lookup endpoint leaks which companies are customers.</span></div>
+            <div class="flow__step"><span class="flow__n num">02</span><span class="flow__t">Okta</span><span class="flow__d">The customer&rsquo;s identity provider authenticates and POSTs a signed SAML assertion.</span></div>
+            <div class="flow__step"><span class="flow__n num">03</span><span class="flow__t">Kong &rarr; GoTrue</span><span class="flow__d">An open route carries the assertion to self-hosted GoTrue&rsquo;s ACS &mdash; open because a browser POST from Okta carries no API key.</span></div>
+            <div class="flow__step"><span class="flow__n num">04</span><span class="flow__t">Provision or absorb</span><span class="flow__d">A new user is provisioned just in time; a user with a pre-existing password account has it absorbed in one transaction.</span></div>
+            <div class="flow__step"><span class="flow__n num">05</span><span class="flow__t">Boundary</span><span class="flow__d">Every read and write is gated on the SAML provider in the session token matching the organization&rsquo;s.</span></div>
+          </div>
+
+          <div class="pts">
+            <div class="pt">
+              <span class="pt__h">Enforcing where a guarantee can actually hold</span>
+              <p class="pt__p">
+                GoTrue offers no hook to reject a social login by email domain, so a user at a captured
+                domain <em>can</em> click &ldquo;Continue with Google&rdquo; and succeed. Rather than
+                unreliably preventing that account, I let it exist as a zero-access shell and moved
+                enforcement to the authorization layer. <code>api.session_can_access_org()</code> reads the
+                SAML provider out of the session token&rsquo;s <code>amr</code> claim and is ANDed into
+                <code>api.is_org_member</code> and <code>api.is_org_admin</code>. Assume the application
+                layer is buggy, and put the boundary underneath it.
+              </p>
+            </div>
+            <div class="pt">
+              <span class="pt__h">Containment in triggers, not controllers</span>
+              <p class="pt__p">
+                Three <code>BEFORE</code> triggers stop an SSO account from owning an org outside its
+                mapping, from joining another org through <em>any</em> write path including service-role
+                inserts, and from being invited elsewhere. No application bug can route around them.
+                Defence in depth: row-level security, a resolver gate across 24 org-addressed resolvers,
+                and the triggers.
+              </p>
+            </div>
+            <div class="pt">
+              <span class="pt__h">Absorbing an account that already exists</span>
+              <p class="pt__p">
+                <code>api.migrate_sso_user()</code> is a <code>SECURITY DEFINER</code> function that runs
+                the whole migration in one transaction: it verifies the domain is genuinely captured by
+                that user&rsquo;s provider, re-points 19 user-linked tables &mdash; memberships, keys,
+                credentials, projects, saved editor state, ownership columns &mdash; resolves role
+                collisions by rank, bans the old account by writing <code>banned_until</code> directly,
+                and deletes its sessions and refresh tokens. Idempotent under concurrency, execute revoked
+                from <code>anon</code> and <code>authenticated</code>, with an integration test asserting
+                it cannot be invoked through the REST layer.
+              </p>
+            </div>
+            <div class="pt">
+              <span class="pt__h">Blast radius, deliberately bounded</span>
+              <p class="pt__p">
+                Every check keys on the organization&rsquo;s <code>sso_enforced</code> flag or on the
+                <code>sso:</code> identity prefix, so organizations without SSO and personal accounts are
+                provably unaffected. The migration also revokes the table-level grant on
+                <code>api.organization</code> and re-grants an explicit column list, because a permissive
+                read policy would otherwise have exposed SSO configuration through the auto-generated REST API.
+              </p>
+            </div>
+          </div>
+
+          <details class="more">
+            <summary>The parts that only show up once real users hit it</summary>
+            <div class="more__inner">
+              <ul>
+                <li><strong>The social-login trap.</strong> A captured-domain user signing in with Google succeeded, got a stray personal workspace minted, and was therefore no longer zero-org &mdash; so absorption would never run on any later login either. Fix: every callback arrival, whether PKCE, hash token, or an existing session, funnels through one finishing path that checks the domain before provisioning anything.</li>
+                <li><strong>No raw error strings, ever.</strong> The callback parses the error code from both the query string <em>and</em> the URL fragment, because a magic-link redirect delivers it in the fragment &mdash; where it previously fell through to a generic &ldquo;authentication timed out&rdquo; after a ten-second stall. The banned-account code produced by my own absorption logic now renders an inline work-email prompt that continues into SSO.</li>
+                <li><strong>A first-login race.</strong> Two concurrent provisioning attempts could collide on an organization slug. Slugs became deterministic per user, email and attempt, so a retry converges instead of racing.</li>
+                <li><strong>A flash of the wrong screen.</strong> A brand-new SSO user&rsquo;s very first sign-in briefly showed the full-screen &ldquo;this organization requires single sign-on&rdquo; error before the overview rendered. Traced through six hops to a client mutation document that selected too few fields, so the freshly seeded organization was cached without the flag the guard reads.</li>
+                <li><strong>Operator footguns closed.</strong> The provider ID has no foreign key, so a hand-copied UUID typo fails silently and only surfaces as a broken login for the customer. The admin endpoint registers the provider and maps it to the org in one atomic action, and any org pointing at a provider that no longer exists is flagged as a broken mapping in the UI. There is deliberately no delete control &mdash; deregistering strands existing identities, and their next login would create duplicates that absorption will not absorb.</li>
+                <li><strong>The customer-facing surface.</strong> I wrote the Okta configuration guide published in the docs site, and the admin provisioning screens &mdash; because the operator&rsquo;s 2am failure mode is part of the feature, not someone else&rsquo;s ticket.</li>
+              </ul>
+            </div>
+          </details>
+
+          <div class="evid" aria-label="Evidence">
+            <span class="evid__chip num">4 Postgres migrations</span>
+            <span class="evid__chip num">24 resolvers behind one gate wrapper</span>
+            <span class="evid__chip num">42 files referencing the enforcement helper</span>
+            <span class="evid__chip num">3 containment triggers</span>
+            <span class="evid__chip num">19 tables re-pointed by absorption</span>
+            <span class="evid__chip num">67 integration test cases</span>
+            <span class="evid__chip num">10 PRs, sole author</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="agent">
+  <div class="shell">
+    <div class="sec__head">
+      <span class="eyebrow">04 &middot; Flagship</span>
+      <div>
+        <h2 class="sec__title">hgraph.ai Agent v2</h2>
+        <p class="sec__intro">
+          hgraph.ai is the front door to Hgraph&rsquo;s paid Hedera and EVM data API: you ask a question in
+          plain English, the agent infers the chain, runs real GraphQL, SQL or RPC through Hgraph&rsquo;s
+          tool server, and answers with rendered data plus the exact query it ran. Version&nbsp;1 was a
+          stateless one-screen chatbot with the API key held in the browser. I rebuilt it as a persistent,
+          shareable product &mdash; ten pull requests, ~16,600 lines across 270 files, spanning four codebases.
+        </p>
+      </div>
+    </div>
+
+    <div class="sec__body">
+      <div class="sec__rail">
+        <div class="railitem"><span class="railitem__k">Linear</span><span class="railitem__v">Project <em>hgraph.ai Agent v2</em> &mdash; project lead, 8-part epic under HG-3371</span></div>
+        <div class="railitem"><span class="railitem__k">Pull requests</span><span class="railitem__v num">#1843 · #1845 · #1846 · #1852 · #1861 · #1862 · #1866 · #1869 · #1870 · #1873</span></div>
+        <div class="railitem"><span class="railitem__k">Biggest</span><span class="railitem__v num">#1852 backend &mdash; +6,329/&minus;571 across 58 files</span></div>
+        <div class="railitem"><span class="railitem__k">Migration</span><span class="railitem__v num">081 &mdash; 437 lines, column-level grants, 4 RLS policies</span></div>
+        <div class="railitem"><span class="railitem__k">Tests</span><span class="railitem__v num">~200 agent unit tests, 805 API integration tests green</span></div>
+      </div>
+
+      <div class="sec__main">
+        <article class="case">
+          <div class="case__flag">
+            <span class="case__tag">Delivered</span>
+            <span class="case__span num">HG-3371 &middot; 17 Aug &ndash; 27 Aug 2026</span>
+          </div>
+          <h3 class="case__title">The API key stopped touching the browser</h3>
+          <p class="case__one">
+            The single most important change between v1 and v2 is that the client no longer holds a
+            credential. The browser sends a session token and nothing else; the backend resolves the
+            caller&rsquo;s organization, looks up that org&rsquo;s live credential server-side, and uses it
+            only as the tool server&rsquo;s auth header. <code>X-Api-Key</code> was deleted from the contract.
+          </p>
+
+          <div class="flow" aria-label="Request flow">
+            <div class="flow__step"><span class="flow__n num">01</span><span class="flow__t">JWT only</span><span class="flow__d">The SPA posts a question with a Supabase session token. No credential leaves the server side.</span></div>
+            <div class="flow__step"><span class="flow__n num">02</span><span class="flow__t">Resolve org</span><span class="flow__d">Thread&rsquo;s org, then requested org with membership enforced, then oldest membership &mdash; every branch SSO-gated.</span></div>
+            <div class="flow__step"><span class="flow__n num">03</span><span class="flow__t">Cap check</span><span class="flow__d">Per-seat daily allowance and a per-org monthly USD ceiling, on durable counters.</span></div>
+            <div class="flow__step"><span class="flow__n num">04</span><span class="flow__t">Tool loop</span><span class="flow__d">A bounded tool-use loop against the MCP tool server, streaming tokens and tool narration in arrival order.</span></div>
+            <div class="flow__step"><span class="flow__n num">05</span><span class="flow__t">Finalize once</span><span class="flow__d">One idempotent write persists the turn, its tool trace and four-way token accounting &mdash; on every exit path.</span></div>
+          </div>
+
+          <div class="pts">
+            <div class="pt">
+              <span class="pt__h">Streaming that survives a disconnect</span>
+              <p class="pt__p">
+                <code>POST /agent/chat</code> emits a typed Server-Sent-Events contract of eleven named
+                events &mdash; org, thread, attachment, usage, status, tool start, tool result, text delta,
+                stats, complete, error &mdash; with per-token deltas from the Anthropic streaming SDK. A
+                single <code>finalize()</code> behind a guard flag runs on every exit path, so a client that
+                closes the tab mid-answer still persists what completed rather than losing the turn.
+              </p>
+            </div>
+            <div class="pt">
+              <span class="pt__h">A schema the browser physically cannot abuse</span>
+              <p class="pt__p">
+                The thread store uses column-level grants rather than blanket table grants: an
+                authenticated client may insert only five columns and update only two. Share slugs, publish
+                state and soft deletes are unwritable from the client by construction, not by validation.
+                Four row-level-security policies scope reads. The schema carries a <code>surface</code>
+                column on purpose, so a future in-dashboard assistant writes into the same history instead
+                of needing a migration.
+              </p>
+            </div>
+            <div class="pt">
+              <span class="pt__h">Cost as a first-class constraint</span>
+              <p class="pt__p">
+                Spend control prices real input, output, cache-read and cache-write tokens into a per-seat
+                daily allowance for the expensive reasoning mode and a per-org monthly USD ceiling, held on
+                durable Valkey counters with alert webhooks at 80% and 100%. The counter path runs as a
+                dedicated cache user restricted to two key prefixes and a ten-command allowlist, so the
+                agent&rsquo;s spend accounting cannot read or write anything else in a shared cache.
+              </p>
+            </div>
+            <div class="pt">
+              <span class="pt__h">Rendering that degrades instead of breaking</span>
+              <p class="pt__p">
+                The model emits a validated chart specification in a fenced block, which promotes to a line,
+                area or bar chart on a shared axis and tooltip base. An unclosed fence mid-stream shows a
+                &ldquo;preparing chart&rdquo; placeholder rather than raw JSON; an invalid specification
+                falls back to visible markdown so nothing is ever silently lost. Answers also carry the
+                exact query that produced them, copyable and deep-linked into the GraphQL playground.
+              </p>
+            </div>
+            <div class="pt">
+              <span class="pt__h">Chat state as a pure reducer</span>
+              <p class="pt__p">
+                Streaming state is a reducer over segments and pending tool slots rather than scattered
+                <code>setState</code> calls, which makes event ordering, tool-slot correlation and delta
+                coalescing unit-testable instead of hopeful. Every callback is guarded on an abort signal and
+                aborts on unmount.
+              </p>
+            </div>
+          </div>
+
+          <details class="more">
+            <summary>Provisioning, sharing, multi-chain, and the four components I kept extractable</summary>
+            <div class="more__inner">
+              <ul>
+                <li><strong>Provisioning on the first message.</strong> A user with no organization gets one provisioned before their question is answered, through the same idempotent path the dashboard uses &mdash; I extracted it from the dashboard&rsquo;s own controller rather than writing a second one. The stream emits the org event ahead of the thread event so the interface hydrates its switcher in the right order.</li>
+                <li><strong>Share links.</strong> Publishing mints a 144-bit unguessable slug. A shared page can be frozen at its publish moment or kept live, and its query traces can be stripped from the payload entirely. There is no anonymous database path at all &mdash; public reads go only through explicit endpoints, and the link 404s immediately on unpublish. Unguessable and revocable, which is exactly as strong as I would describe it.</li>
+                <li><strong>Fork, across an OAuth round trip.</strong> &ldquo;Continue this chat&rdquo; copies a shared thread into the visitor&rsquo;s own workspace and survives the sign-in redirect; if the message copy fails, the fork deletes itself rather than leaving a half-thread.</li>
+                <li><strong>Multi-chain inference.</strong> The cached system prompt carries chain-inference rules plus the live chain catalog from the tool server. The chain became a default rather than a pin, so the model can load context for any other chain, cached per chain and topic for 24 hours, and degrades gracefully when the catalog is unreachable.</li>
+                <li><strong>Redaction on the way back in.</strong> Tool results are fed back to the model, so every tool result and error goes through a secret-redaction pass first.</li>
+                <li><strong>Extractability as a design constraint.</strong> The four primitives the design system lacked &mdash; data table, line chart, entity card, command menu &mdash; were built props-in / events-out with no agent imports and design-system tokens only, so promoting them into the shared library is a file move rather than a rewrite.</li>
+              </ul>
+            </div>
+          </details>
+
+          <div class="evid" aria-label="Evidence">
+            <span class="evid__chip num">11-event SSE contract</span>
+            <span class="evid__chip num">~16,600 lines / 270 files</span>
+            <span class="evid__chip num">4 codebases</span>
+            <span class="evid__chip num">Column-level grants + 4 RLS policies</span>
+            <span class="evid__chip num">~200 agent unit tests</span>
+            <span class="evid__chip num">805/805 API integration tests</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="projects">
+  <div class="shell">
+    <div class="sec__head">
+      <span class="eyebrow">05 &middot; The rest of it</span>
+      <div>
+        <h2 class="sec__title">Six more projects, in Linear&rsquo;s own grouping</h2>
+        <p class="sec__intro">
+          My 179 assigned issues sit across eight Linear projects. These are the six that are not the two
+          flagships &mdash; including the one I would actually point a senior engineer at first, which is
+          the least glamorous of them.
+        </p>
+      </div>
+    </div>
+
+    <div class="cards">
+
+      <article class="card reveal">
+        <span class="card__k">30 issues &middot; ~28 PRs &middot; Jun&ndash;Jul</span>
+        <h3 class="card__t">ClickHouse usage analytics</h3>
+        <p class="card__p">
+          The customer-facing API Usage dashboard, carried alone from ClickHouse SQL through GraphQL
+          resolvers to the React interface. This was the pivot from ticket-taking to owning a feature.
+        </p>
+        <ul class="card__list">
+          <li>Latency percentiles, rate-limit headroom, error metrics split between transport and GraphQL failures, and a cursor-paginated request-log explorer.</li>
+          <li>Adaptive time bucketing so a chart&rsquo;s point count stays bounded whatever range you ask for, with aligned bucket edges and a server-side ceiling.</li>
+          <li>Query performance: bounded joins for partition pruning, bloom-filter skip indexes for tenant-scoped filters, and skipping a cross-tenant join entirely when nothing selected needs it.</li>
+          <li><strong>The judgment call:</strong> a swallowed ClickHouse error was rendering as &ldquo;0 requests, 0% of quota&rdquo;. A plausible wrong number is worse than a visible failure, so I raised an explicit unavailable state instead.</li>
+        </ul>
+        <span class="card__foot num">API unit suite 83 &rarr; 282 tests as this work landed</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__k">3 ordered stages &middot; Jul</span>
+        <h3 class="card__t">Retiring a live API key format</h3>
+        <p class="card__p">
+          The unglamorous one, and the one I would hand a senior reviewer first. Two key variants had to be
+          removed from a system that was actively serving traffic.
+        </p>
+        <ul class="card__list">
+          <li>Stage one stopped publishing the dev variants in all four cache-sync paths, deliberately leaving the <em>removal</em> paths intact so anything already published still got cleaned up.</li>
+          <li>Instrumentation proved zero dev-key requests in 24 hours against 14.07 million production requests before anything was dropped.</li>
+          <li>The migration PR was held as a draft until stage one had run a full job cycle, on the reasoning that reverting a code deploy is cheap and reverting a migration is not.</li>
+          <li>The instrumentation was removed last, in its own PR, so the temporary code did not become permanent.</li>
+        </ul>
+        <span class="card__foot num">PRs #1663 &rarr; #1670 &rarr; #1684, in that order on purpose</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__k">34 issues &middot; 10 releases &middot; Jun&ndash;Aug</span>
+        <h3 class="card__t">Design system</h3>
+        <p class="card__p">
+          Producer-side ownership of <code>@hgraph-io/design-system</code>: the library six frontends build
+          against. 21 component PRs, 10 releases cut, consumer migrations app by app.
+        </p>
+        <ul class="card__list">
+          <li>Shipped the date picker, date-range picker, time picker, code panel, theme toggle, site footer, loading skeletons and the canonical brand favicons.</li>
+          <li>Cut the library&rsquo;s first <code>v1.0.0</code>, with each removal carrying a documented replacement.</li>
+          <li>Narrowed the React peer range to 19 only after every consumer in the monorepo had already migrated &mdash; sequencing, not just upgrading.</li>
+          <li>Rolled each release out to the consumers myself rather than leaving five teams to discover the bump.</li>
+        </ul>
+        <span class="card__foot num">Suite 386 &rarr; 514 test cases; 37 commits to the package</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__k">164 files &middot; +10,756 lines &middot; Jul</span>
+        <h3 class="card__t">hgraph.com marketing site</h3>
+        <p class="card__p">
+          A production marketing website built from zero &mdash; the largest single pull request of my
+          tenure. The more interesting fact is what happened next.
+        </p>
+        <ul class="card__list">
+          <li>Then I deleted 1,891 lines of my own hand-rolled CSS in favour of a proper Tailwind theme-and-layer structure, replacing custom components with design-system ones.</li>
+          <li>Migrated it onto React Router 7 framework mode with server rendering off and every static and content route prerendered at build time.</li>
+          <li>Legal and policy pages, mobile navigation and hero fixes, a generated sitemap, and hiding embeds that had gone dead.</li>
+        </ul>
+        <span class="card__foot num">Refactoring my own recent work down, not defending it</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__k">20 issues &middot; Jun&ndash;Aug</span>
+        <h3 class="card__t">Repo infrastructure &amp; security hygiene</h3>
+        <p class="card__p">
+          The gates and tooling every engineer in the repo runs dozens of times a day.
+        </p>
+        <ul class="card__list">
+          <li>Split a ~700-line pre-commit hook into fast static gates on commit and unit suites on push, with the shared logic factored into one library.</li>
+          <li>Added repo-wide gitleaks secret scanning &mdash; on the staged diff locally, and as a pinned CI job on every pull request, with a documented allowlist runbook.</li>
+          <li>Collapsed five drifted compose dispatchers into one, and made CI-deployed services refuse a local bring-up that could otherwise put a shadow container on the production network.</li>
+          <li>Dead-code detection tightened across all eight leaf services at the time, and an edge-level fix so denied requests still return CORS headers.</li>
+        </ul>
+        <span class="card__foot num">PRs #1308 · #1576 · #1577 · #1708 · #1768 · #1824</span>
+      </article>
+
+      <article class="card reveal">
+        <span class="card__k">6 issues &middot; Jul</span>
+        <h3 class="card__t">Activation &amp; onboarding</h3>
+        <p class="card__p">
+          Getting a new signup from account to first successful API call, measured rather than assumed.
+        </p>
+        <ul class="card__list">
+          <li>A get-started checklist backed by real activation events written from the actions themselves &mdash; key reveal, first playground query &mdash; not from page views.</li>
+          <li>Guided product tours for each checklist item.</li>
+          <li>A new table for app-owned user state, plus a backfill migration so existing active users were not shown an onboarding flow they had long outgrown.</li>
+        </ul>
+        <span class="card__foot num">HG-3224 · HG-3228 &middot; PRs #1571 · #1573 · #1589 · #1595 · #1608 · #1618</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="growth">
+  <div class="shell">
+    <div class="sec__head">
+      <span class="eyebrow">06 &middot; Before and after</span>
+      <div>
+        <h2 class="sec__title">What actually changed, dimension by dimension</h2>
+        <p class="sec__intro">
+          Same person, same repo, eleven weeks apart. I find this the most honest way to show a level
+          change: not a title, but a widening of what a single change of mine is trusted to touch.
+        </p>
+      </div>
+    </div>
+
+    <div class="tablewrap reveal">
+      <table class="growth">
+        <caption>Week 1 versus week 11, drawn from the same git history</caption>
+        <thead>
+          <tr>
+            <th scope="col">Dimension</th>
+            <th scope="col">June</th>
+            <th scope="col">August</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Blast radius</th>
+            <td class="early">Refresh buttons on one page of one app. +75/&minus;52.</td>
+            <td class="later">One Postgres function composed into the membership predicates, so every row-level-security policy testing org membership inherited an SSO boundary &mdash; plus 24 resolvers behind one gate wrapper.</td>
+          </tr>
+          <tr>
+            <th scope="row">Layers per change</th>
+            <td class="early">Interface only, against an API and a component library other people defined.</td>
+            <td class="later">A DDL migration, GraphQL resolvers and the React interface in one feature; Agent v2 spanning four codebases plus gateway and cache configuration.</td>
+          </tr>
+          <tr>
+            <th scope="row">Who depends on it</th>
+            <td class="early">Consumed the shared UI library as one of six apps.</td>
+            <td class="later">Published it: 10 releases, breaking changes with documented replacements, peer ranges narrowed only after every consumer had migrated.</td>
+          </tr>
+          <tr>
+            <th scope="row">Debugging depth</th>
+            <td class="early">Fixed a stale time-window bug in a chart I had written days earlier.</td>
+            <td class="later">Traced a production chart outage to a charting library flattening fragment children through a React version that could not recognise React 19 elements &mdash; then upgraded to retire the whole bug class.</td>
+          </tr>
+          <tr>
+            <th scope="row">Deploy risk</th>
+            <td class="early">Self-contained pull requests; nothing to sequence.</td>
+            <td class="later">A three-stage retirement of a live key format, the migration held back until the code stage had been observed through a job cycle, each intermediate state verified locally.</td>
+          </tr>
+          <tr>
+            <th scope="row">Security posture</th>
+            <td class="early">No security surface in the early tickets.</td>
+            <td class="later">Column-level grants replacing a table grant; definer functions with execute revoked from public roles; three containment triggers; a credential that never reaches the browser.</td>
+          </tr>
+          <tr>
+            <th scope="row">Audience</th>
+            <td class="early">An internal page for internal users.</td>
+            <td class="later">A customer-facing identity-provider setup guide, an admin provisioning surface, and the operator failure mode designed for rather than left open.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="stack">
+  <div class="shell">
+    <div class="sec__head">
+      <span class="eyebrow">07 &middot; Stack</span>
+      <div>
+        <h2 class="sec__title">What I actually used, not what I&rsquo;ve read about</h2>
+        <p class="sec__intro">
+          Everything below appears in code I authored and merged in this repository. I have left out
+          anything I only configured or only read.
+        </p>
+      </div>
+    </div>
+
+    <div class="stack">
+      <div class="stackgrp reveal">
+        <h3 class="stackgrp__h">Languages &amp; runtime</h3>
+        <div class="chips">
+          <span class="chip">TypeScript 5.9</span><span class="chip">SQL &mdash; PostgreSQL</span>
+          <span class="chip">SQL &mdash; ClickHouse</span><span class="chip">Bun</span>
+          <span class="chip">Node / Express 5</span><span class="chip">Bash</span>
+        </div>
+      </div>
+      <div class="stackgrp reveal">
+        <h3 class="stackgrp__h">Frontend</h3>
+        <div class="chips">
+          <span class="chip">React 19</span><span class="chip">React Router 7 (framework mode)</span>
+          <span class="chip">TanStack Query</span><span class="chip">recharts 3</span>
+          <span class="chip">Tailwind CSS v4</span><span class="chip">react-aria-components</span>
+          <span class="chip">Vite</span><span class="chip">Vitest</span><span class="chip">Storybook</span>
+          <span class="chip">aria-live / aria-sort / inert</span>
+        </div>
+      </div>
+      <div class="stackgrp reveal">
+        <h3 class="stackgrp__h">API &amp; backend</h3>
+        <div class="chips">
+          <span class="chip">GraphQL &mdash; Apollo Server 5</span><span class="chip">Selection-set-aware query planning</span>
+          <span class="chip">Server-Sent Events streaming</span><span class="chip">Supabase / PostgREST</span>
+          <span class="chip">Kong routing &amp; plugins</span><span class="chip">HAProxy</span>
+          <span class="chip">Valkey / Redis &mdash; ACL users, atomic counters</span><span class="chip">Hasura metadata</span>
+        </div>
+      </div>
+      <div class="stackgrp reveal">
+        <h3 class="stackgrp__h">Data &amp; analytics</h3>
+        <div class="chips">
+          <span class="chip">ClickHouse quantile / countIf aggregation</span><span class="chip">Bloom-filter skip indexes</span>
+          <span class="chip">Bounded joins &amp; partition pruning</span><span class="chip">Query deadlines &amp; abort signals</span>
+          <span class="chip">Postgres row-level security</span><span class="chip">SECURITY DEFINER / INVOKER</span>
+          <span class="chip">Column-level grants</span><span class="chip">Cursor / seek pagination</span>
+          <span class="chip">Grafana dashboards</span>
+        </div>
+      </div>
+      <div class="stackgrp reveal">
+        <h3 class="stackgrp__h">Auth &amp; security</h3>
+        <div class="chips">
+          <span class="chip">SAML 2.0 federation (self-hosted GoTrue)</span><span class="chip">JIT provisioning &amp; account absorption</span>
+          <span class="chip">JWT claim-based authorization</span><span class="chip">Defence in depth &mdash; RLS + resolver gate + triggers</span>
+          <span class="chip">PKCE / OAuth callbacks</span><span class="chip">Server-side credential isolation</span>
+          <span class="chip">Secret redaction</span><span class="chip">gitleaks scanning</span>
+        </div>
+      </div>
+      <div class="stackgrp reveal">
+        <h3 class="stackgrp__h">AI engineering</h3>
+        <div class="chips">
+          <span class="chip">Anthropic streaming SDK</span><span class="chip">Bounded tool-use loops</span>
+          <span class="chip">MCP client integration</span><span class="chip">Prompt caching with a stable prefix</span>
+          <span class="chip">Four-way token accounting</span><span class="chip">Cost ceilings &amp; spend counters</span>
+          <span class="chip">Graceful degradation on tool failure</span>
+        </div>
+      </div>
+      <div class="stackgrp reveal">
+        <h3 class="stackgrp__h">Platform &amp; tooling</h3>
+        <div class="chips">
+          <span class="chip">npm library ownership &mdash; 10 releases</span><span class="chip">semver &amp; peer-range discipline</span>
+          <span class="chip">Monorepo framework migrations</span><span class="chip">Git hooks architecture</span>
+          <span class="chip">Docker / Podman Compose</span><span class="chip">Taskfile</span>
+          <span class="chip">GitHub Actions</span><span class="chip">knip</span><span class="chip">ESLint plugin config</span>
+        </div>
+      </div>
+      <div class="stackgrp reveal">
+        <h3 class="stackgrp__h">How I work</h3>
+        <div class="chips">
+          <span class="chip">Small single-purpose PRs</span><span class="chip">Additive-then-migrate-then-delete sequencing</span>
+          <span class="chip">Fix at the layer that owns the bug</span><span class="chip">Write the test that would have caught it</span>
+          <span class="chip">Claude Code in the loop, reviewed by hand</span><span class="chip">Docs and runbooks as part of the feature</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="open">
+  <div class="shell">
+    <div class="sec__head">
+      <span class="eyebrow">08 &middot; Unfinished</span>
+      <div>
+        <h2 class="sec__title">What I know is still open</h2>
+        <p class="sec__intro">
+          I would rather tell you the gaps than have you find them. As of 27 August 2026:
+        </p>
+      </div>
+    </div>
+    <div class="open reveal">
+      <ul class="open__list">
+        <li><strong>Agent v2 is at 6 of 8.</strong> Share links and the funnel handoffs are in review; accessibility hardening and deleting the legacy agent are the two issues after that. The v2 surface is behind a build flag until then.</li>
+        <li><strong>SSO provider management is thin.</strong> Registration and mapping are automated; refreshing identity-provider metadata, editing captured domains and re-pointing a provider are still backlogged, and there is no delete control on purpose.</li>
+        <li><strong>No SCIM and no deprovisioning path.</strong> Provisioning is just-in-time on first sign-in. Removing a user from the identity provider does not yet remove their Hgraph access, and that is the next thing I would build.</li>
+        <li><strong>Spend ceilings are pre-flight, not hard stops.</strong> The check runs before a turn and accrual happens after it, so one in-flight turn can overshoot, and the counter fails open if the cache is unreachable. That is a deliberate availability trade-off, and it is documented as one rather than being presented as a hard limit.</li>
+        <li><strong>Reviewing other people&rsquo;s code.</strong> Two pull requests, honestly counted. The clearest thing missing from this record.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell foot__grid">
+    <div>
+      <span class="eyebrow">Sources</span>
+    </div>
+    <div class="foot__note">
+      <p>
+        Every figure on this page was read directly from <code>hgraph-io/hg-core</code>: commit and line
+        counts from <code>git log</code> against <code>origin/main</code>, pull-request counts from the
+        GitHub API, and issue and project counts from the Linear workspace. Where a number could not be
+        reproduced from a command, it was removed rather than rounded &mdash; and where a figure flattered
+        me but did not hold up, like the review count, it is called out above.
+      </p>
+      <p>
+        Window: 8 June &ndash; 27 August 2026. Company: Hgraph, Hedera and EVM blockchain data
+        infrastructure. Role: Software Engineer Apprentice, then Junior Software Engineer.
+      </p>
+      <div class="foot__links">
+        <a href="https://github.com/phil-hgraph">github.com/phil-hgraph</a>
+        <a href="mailto:hello@phillipcantu.com">hello@phillipcantu.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </div>
+</BaseLayout>
+
+<script is:inline>
+
+
+
+/* One scroll-sweep engine drives the reveal, chart-grow, and count-up effects.
+   Unlike IntersectionObserver, a sweep can never strand content invisible:
+   anything at or above the viewport line fires, even after an anchor jump. */
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) return;
+
+  var record = document.querySelector('.record');
+  if (record) record.classList.add('is-armed');
+
+  var jobs = [];
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    jobs.push({ el: el, run: function () { el.classList.add('is-in'); } });
+  });
+
+  var chart = document.getElementById('chart');
+  var plot = document.getElementById('plot');
+  if (chart && plot) {
+    var bars = Array.prototype.slice.call(plot.querySelectorAll('.bar'));
+    bars.forEach(function (b) { b.style.height = '0%'; });
+    jobs.push({
+      el: chart,
+      run: function () {
+        bars.forEach(function (b, i) {
+          setTimeout(function () { b.style.height = b.dataset.target; }, i * 22);
+        });
+      },
+    });
+  }
+
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    jobs.push({
+      el: el,
+      run: function () {
+        var target = parseInt(el.dataset.count, 10);
+        var final = el.textContent;
+        var start = null;
+        function frame(ts) {
+          if (start === null) start = ts;
+          var p = Math.min((ts - start) / 850, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased).toLocaleString('en-US');
+          if (p < 1) requestAnimationFrame(frame);
+          else el.textContent = final;
+        }
+        requestAnimationFrame(frame);
+      },
+    });
+  });
+
+  var ticking = false;
+  function sweep() {
+    ticking = false;
+    jobs = jobs.filter(function (j) {
+      if (j.el.getBoundingClientRect().top < window.innerHeight * 0.94) {
+        j.run();
+        return false;
+      }
+      return true;
+    });
+    if (!jobs.length) {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    }
+  }
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      setTimeout(sweep, 40);
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  sweep();
+})();
+
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
+  var sections = links
+    .map(function (l) { return document.querySelector(l.getAttribute('href')); })
+    .filter(Boolean);
+  if (!sections.length || !('IntersectionObserver' in window)) return;
+
+  var visible = {};
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+    var best = null, bestRatio = 0;
+    sections.forEach(function (s) {
+      var r = visible[s.id] || 0;
+      if (r > bestRatio) { bestRatio = r; best = s.id; }
+    });
+    links.forEach(function (l) {
+      l.classList.toggle('is-active', best !== null && l.getAttribute('href') === '#' + best);
+    });
+  }, { threshold: [0, 0.15, 0.4, 0.75], rootMargin: '-15% 0px -45% 0px' });
+  sections.forEach(function (s) { obs.observe(s); });
+})();
+
+</script>
+
+<style>
+
+.record{
+  /* Site tokens, plus Hgraph's brand purple as this page's secondary ink */
+  --ground: var(--color-bg);
+  --ink: var(--color-ink);
+  --accent: oklch(0.33 0.055 296);
+  --hg: oklch(0.25 0.078 295);
+  --muted: var(--color-muted);
+  --panel: var(--color-panel);
+  --well: oklch(0.9 0.006 96);
+  --rule: oklch(0.32 0.03 296 / 0.15);
+  --rule-mid: oklch(0.32 0.03 296 / 0.28);
+  --rule-hard: oklch(0.32 0.03 296 / 0.55);
+  --sans: var(--font-sans);
+  --linkface: var(--font-ui);
+  --code: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --gap-xs: .375rem; --gap-s: .75rem; --gap-m: 1.25rem; --gap-l: 2rem; --gap-xl: 3.25rem; --gap-xxl: 5rem;
+  --shell: min(1180px, 100% - 2.5rem);
+  --rail: 11.5rem;
+  font-size: clamp(.9375rem, .905rem + .16vw, 1.0125rem);
+  line-height: 1.62;
+}
+
+
+
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.018em;text-wrap:balance;line-height:1.16;}
+p{margin:0;}
+ul,ol{margin:0;padding:0;list-style:none;}
+
+a{
+  font-family:var(--linkface);
+  font-weight:400;
+  color:var(--accent);
+  cursor:pointer;
+  text-decoration:none;
+  border-bottom:1px solid var(--rule-mid);
+  transition:border-color .16s ease,color .16s ease;
+}
+a:hover{color:var(--ink);border-bottom-color:var(--rule-hard);}
+a:focus-visible,button:focus-visible,summary:focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;
+}
+button,summary{cursor:pointer;}
+
+code,.mono{
+  font-family:var(--code);
+  font-size:.855em;
+  letter-spacing:-.01em;
+  background:var(--well);
+  padding:.08em .34em;
+  border-radius:2px;
+  color:var(--accent);
+  word-break:break-word;
+}
+
+.shell{width:var(--shell);margin-inline:auto;}
+.num{font-variant-numeric:tabular-nums;}
+
+/* ---------- eyebrow / labels ---------- */
+.eyebrow{
+  font-family:var(--sans);font-weight:600;font-size:.6875rem;
+  text-transform:uppercase;letter-spacing:.13em;color:var(--muted);
+  display:block;
+}
+
+/* ---------- sticky nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--ground) 92%,transparent);
+  backdrop-filter:blur(9px);
+  border-bottom:1px solid var(--rule);
+}
+.nav__inner{
+  width:var(--shell);margin-inline:auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--gap-m);min-height:3.25rem;
+}
+.nav__mark{font-weight:600;font-size:.8125rem;letter-spacing:.01em;white-space:nowrap;}
+.nav__mark span{color:var(--muted);font-weight:400;}
+.nav__links{display:flex;gap:.15rem;overflow-x:auto;scrollbar-width:none;}
+.nav__links::-webkit-scrollbar{display:none;}
+.nav__link{
+  font-family:var(--linkface);font-size:.75rem;color:var(--muted);
+  border-bottom:1px solid transparent;padding:.3rem .5rem;white-space:nowrap;
+}
+.nav__link:hover{color:var(--ink);border-bottom-color:transparent;background:var(--well);border-radius:2px;}
+.nav__link.is-active{color:var(--ink);font-weight:400;background:var(--well);border-radius:2px;}
+
+/* ---------- hero ---------- */
+.hero{padding:var(--gap-xl) 0 var(--gap-l);border-bottom:1px solid var(--rule);}
+.hero__grid{display:grid;gap:var(--gap-l);}
+@media (min-width:900px){.hero__grid{grid-template-columns:var(--rail) minmax(0,1fr);gap:var(--gap-l) var(--gap-l);}}
+.hero__meta{display:flex;flex-direction:column;gap:var(--gap-s);}
+.hero__metarow{display:flex;flex-direction:column;gap:.1rem;}
+.hero__metaval{font-size:.8125rem;color:var(--accent);}
+.hero__title{font-size:clamp(2.1rem,1.25rem + 3.4vw,3.5rem);letter-spacing:-.028em;}
+.hero__role{
+  margin-top:var(--gap-m);display:flex;align-items:center;flex-wrap:wrap;gap:.6rem;
+  font-size:clamp(.9375rem,.9rem + .3vw,1.125rem);font-weight:600;
+}
+.hero__role .from{color:var(--muted);}
+.hero__role .arrow{color:var(--muted);font-weight:400;}
+.hero__lede{margin-top:var(--gap-m);max-width:64ch;color:var(--accent);font-size:clamp(1rem,.96rem + .3vw,1.1875rem);line-height:1.55;}
+.hero__sub{margin-top:var(--gap-s);max-width:66ch;color:var(--muted);font-size:.9375rem;}
+
+/* ---------- stat strip ---------- */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));
+  border-top:1px solid var(--rule-mid);border-left:1px solid var(--rule-mid);
+  margin-top:var(--gap-l);
+}
+.stat{
+  border-right:1px solid var(--rule-mid);border-bottom:1px solid var(--rule-mid);
+  padding:var(--gap-s) var(--gap-s) .875rem;background:var(--panel);
+}
+.stat__val{font-size:clamp(1.5rem,1.2rem + .95vw,2.125rem);font-weight:600;letter-spacing:-.035em;display:block;line-height:1.05;}
+.stat__label{display:block;margin-top:.3rem;font-size:.71rem;color:var(--muted);line-height:1.35;}
+
+/* ---------- generic section ---------- */
+.sec{padding:var(--gap-xxl) 0;border-bottom:1px solid var(--rule);}
+.sec__head{display:grid;gap:var(--gap-s);margin-bottom:var(--gap-l);}
+@media (min-width:900px){.sec__head{grid-template-columns:var(--rail) minmax(0,1fr);gap:var(--gap-l);align-items:baseline;}}
+.sec__title{font-size:clamp(1.375rem,1.2rem + .8vw,1.875rem);}
+.sec__intro{margin-top:var(--gap-s);max-width:66ch;color:var(--accent);}
+.sec__body{display:grid;gap:var(--gap-l);}
+@media (min-width:900px){.sec__body{grid-template-columns:var(--rail) minmax(0,1fr);gap:var(--gap-l);}}
+.sec__rail{display:flex;flex-direction:column;gap:var(--gap-m);}
+.sec__main{display:grid;gap:var(--gap-m);min-width:0;}
+
+.railitem{display:flex;flex-direction:column;gap:.15rem;}
+.railitem__k{font-size:.6875rem;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);font-weight:600;}
+.railitem__v{font-size:.8125rem;color:var(--accent);}
+
+.prose{max-width:68ch;color:var(--accent);display:grid;gap:var(--gap-s);}
+.prose strong{color:var(--ink);font-weight:600;}
+
+/* ---------- chart ---------- */
+.chart{background:var(--panel);border:1px solid var(--rule-mid);padding:var(--gap-m);}
+.chart__legend{display:flex;gap:var(--gap-m);flex-wrap:wrap;margin-bottom:var(--gap-m);}
+.chart__key{display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:var(--muted);}
+.chart__swatch{width:.7rem;height:.7rem;display:inline-block;}
+.chart__swatch--a{background:var(--accent);}
+.chart__swatch--b{background:var(--well);border:1px solid var(--rule-hard);}
+.chart__plot{display:flex;align-items:flex-end;gap:clamp(.2rem,1vw,.7rem);height:11rem;border-bottom:1px solid var(--rule-hard);}
+.week{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;position:relative;}
+.week__bars{display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center;}
+.bar{width:46%;max-width:1.4rem;transition:height .7s cubic-bezier(.2,.7,.2,1);}
+.bar--a{background:var(--accent);}
+.bar--b{background:var(--well);border:1px solid var(--rule-hard);border-bottom:0;}
+.week__tip{
+  position:absolute;bottom:calc(100% + .4rem);left:50%;transform:translateX(-50%);
+  background:var(--ink);color:var(--ground);font-size:.6875rem;padding:.3rem .5rem;
+  white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .14s ease;z-index:2;
+}
+.week:hover .week__tip,.week:focus-within .week__tip{opacity:1;}
+.chart__axis{display:flex;gap:clamp(.2rem,1vw,.7rem);margin-top:.5rem;}
+.chart__axis span{flex:1;text-align:center;font-size:.625rem;color:var(--muted);letter-spacing:.01em;}
+.chart__note{margin-top:var(--gap-s);font-size:.75rem;color:var(--muted);max-width:62ch;}
+@media (prefers-reduced-motion:reduce){.bar{transition:none;}}
+
+/* ---------- arc timeline ---------- */
+.arc{display:grid;gap:0;}
+.stage{
+  display:grid;gap:var(--gap-s);padding:var(--gap-m) 0;
+  border-top:1px solid var(--rule);
+}
+.stage:first-child{border-top:1px solid var(--rule-hard);}
+@media (min-width:900px){.stage{grid-template-columns:var(--rail) minmax(0,1fr);gap:var(--gap-l);}}
+.stage__meta{display:flex;flex-direction:column;gap:.3rem;}
+.stage__when{font-size:.8125rem;font-weight:600;}
+.stage__level{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;line-height:1.4;}
+.stage__title{font-size:1.0625rem;}
+.stage__what{margin-top:.4rem;max-width:66ch;color:var(--accent);}
+.stage__list{margin-top:var(--gap-s);display:grid;gap:.45rem;max-width:70ch;}
+.stage__list li{
+  padding-left:1rem;position:relative;font-size:.875rem;color:var(--muted);line-height:1.5;
+}
+.stage__list li::before{
+  content:"";position:absolute;left:0;top:.62em;width:.4rem;height:1px;background:var(--rule-hard);
+}
+
+/* ---------- case study ---------- */
+.case{border-top:1px solid var(--rule-hard);padding-top:var(--gap-m);}
+.case__flag{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;margin-bottom:.5rem;}
+.case__tag{
+  font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.11em;
+  background:var(--hg);color:var(--ground);padding:.2rem .45rem;
+}
+.case__span{font-size:.75rem;color:var(--muted);}
+.case__title{font-size:clamp(1.25rem,1.1rem + .7vw,1.625rem);}
+.case__one{margin-top:var(--gap-s);max-width:68ch;font-size:1.0625rem;color:var(--ink);line-height:1.5;}
+.case__body{margin-top:var(--gap-m);}
+
+.flow{
+  display:flex;flex-wrap:wrap;align-items:stretch;gap:.4rem;
+  margin:var(--gap-m) 0;padding:var(--gap-s);background:var(--panel);border:1px solid var(--rule-mid);
+}
+.flow__step{
+  flex:1 1 8.5rem;min-width:0;background:var(--ground);border:1px solid var(--rule);
+  padding:.55rem .6rem;display:flex;flex-direction:column;gap:.2rem;
+}
+.flow__n{font-size:.625rem;font-weight:600;letter-spacing:.1em;color:var(--muted);}
+.flow__t{font-size:.8125rem;font-weight:600;line-height:1.3;}
+.flow__d{font-size:.71rem;color:var(--muted);line-height:1.4;}
+
+.pts{display:grid;gap:var(--gap-s);max-width:72ch;}
+.pt{display:grid;gap:.2rem;padding-left:var(--gap-m);border-left:2px solid var(--rule-mid);}
+.pt__h{font-size:.9375rem;font-weight:600;}
+.pt__p{font-size:.875rem;color:var(--accent);line-height:1.55;}
+
+details.more{margin-top:var(--gap-m);border-top:1px solid var(--rule);}
+details.more>summary{
+  list-style:none;padding:.7rem 0;display:flex;align-items:center;gap:.5rem;
+  font-size:.8125rem;font-weight:600;color:var(--accent);
+}
+details.more>summary::-webkit-details-marker{display:none;}
+details.more>summary::before{
+  content:"+";font-weight:400;width:1rem;height:1rem;display:grid;place-items:center;
+  border:1px solid var(--rule-hard);font-size:.8125rem;line-height:1;
+}
+details.more[open]>summary::before{content:"–";}
+details.more>summary:hover{color:var(--ink);}
+.more__inner{padding-bottom:var(--gap-m);display:grid;gap:var(--gap-s);max-width:72ch;}
+.more__inner li{
+  font-size:.84rem;color:var(--muted);line-height:1.55;padding-left:1rem;position:relative;
+}
+.more__inner li::before{content:"";position:absolute;left:0;top:.62em;width:.4rem;height:1px;background:var(--rule-hard);}
+
+.evid{
+  margin-top:var(--gap-m);display:flex;flex-wrap:wrap;gap:.35rem;
+}
+.evid__chip{
+  font-size:.6875rem;color:var(--accent);background:var(--well);
+  padding:.25rem .45rem;letter-spacing:.01em;
+}
+
+/* ---------- project cards ---------- */
+.cards{display:grid;gap:var(--gap-m);}
+@media (min-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.card{
+  background:var(--panel);border:1px solid var(--rule-mid);padding:var(--gap-m);
+  display:flex;flex-direction:column;gap:.5rem;min-width:0;
+}
+.card__k{font-size:.6875rem;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);font-weight:600;}
+.card__t{font-size:1.0625rem;}
+.card__p{font-size:.875rem;color:var(--accent);line-height:1.55;}
+.card__list{display:grid;gap:.4rem;margin-top:.15rem;}
+.card__list li{font-size:.8125rem;color:var(--muted);line-height:1.5;padding-left:1rem;position:relative;}
+.card__list li::before{content:"";position:absolute;left:0;top:.62em;width:.4rem;height:1px;background:var(--rule-hard);}
+.card__foot{margin-top:auto;padding-top:.6rem;border-top:1px solid var(--rule);font-size:.6875rem;color:var(--muted);}
+
+/* ---------- growth table ---------- */
+.tablewrap{overflow-x:auto;border:1px solid var(--rule-mid);background:var(--panel);}
+table.growth{border-collapse:collapse;width:100%;min-width:44rem;font-size:.8125rem;}
+table.growth caption{text-align:left;padding:var(--gap-s) var(--gap-m);font-size:.75rem;color:var(--muted);border-bottom:1px solid var(--rule);}
+table.growth th,table.growth td{
+  text-align:left;vertical-align:top;padding:.7rem var(--gap-s);border-bottom:1px solid var(--rule);line-height:1.5;
+}
+table.growth thead th{
+  font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
+  font-weight:600;border-bottom:1px solid var(--rule-hard);white-space:nowrap;
+}
+table.growth tbody th{font-weight:600;color:var(--ink);width:9.5rem;}
+table.growth td.early{color:var(--muted);}
+table.growth td.later{color:var(--accent);}
+table.growth tbody tr:last-child th,table.growth tbody tr:last-child td{border-bottom:0;}
+
+/* ---------- stack ---------- */
+.stack{display:grid;gap:var(--gap-m);}
+@media (min-width:760px){.stack{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.stackgrp{display:flex;flex-direction:column;gap:.5rem;}
+.stackgrp__h{font-size:.6875rem;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);font-weight:600;padding-bottom:.4rem;border-bottom:1px solid var(--rule-mid);}
+.chips{display:flex;flex-wrap:wrap;gap:.3rem;}
+.chip{font-size:.75rem;color:var(--accent);background:var(--well);padding:.22rem .45rem;line-height:1.4;}
+
+/* ---------- open work ---------- */
+.open{background:var(--panel);border:1px solid var(--rule-mid);padding:var(--gap-m);max-width:72ch;}
+.open__list{display:grid;gap:.55rem;margin-top:var(--gap-s);}
+.open__list li{font-size:.875rem;color:var(--accent);line-height:1.55;padding-left:1rem;position:relative;}
+.open__list li::before{content:"";position:absolute;left:0;top:.62em;width:.4rem;height:1px;background:var(--rule-hard);}
+
+/* ---------- footer ---------- */
+.foot{padding:var(--gap-xl) 0 var(--gap-xxl);}
+.foot__grid{display:grid;gap:var(--gap-m);}
+@media (min-width:900px){.foot__grid{grid-template-columns:var(--rail) minmax(0,1fr);gap:var(--gap-l);}}
+.foot__note{max-width:66ch;font-size:.8125rem;color:var(--muted);display:grid;gap:.6rem;}
+.foot__links{display:flex;flex-wrap:wrap;gap:var(--gap-m);margin-top:var(--gap-s);font-size:.875rem;}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:1;transform:none;}
+.record.is-armed .reveal{
+  opacity:0;transform:translateY(10px);
+  transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1);
+}
+.record.is-armed .reveal.is-in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  .record.is-armed .reveal{opacity:1;transform:none;transition:none;}
+}
+
+</style>

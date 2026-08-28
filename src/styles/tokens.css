@@ -1,0 +1,31 @@
+/* Design tokens — single source of truth. All colors in oklch. */
+:root {
+  /* color */
+  --color-bg: oklch(0.958 0.006 96);
+  --color-ink: oklch(0.21 0.006 96);
+  --color-muted: oklch(0.45 0.008 96);
+  /* 0.52 lightness = 4.87:1 on --color-bg; 0.54+ fails WCAG AA for small text */
+  --color-soft: oklch(0.52 0.008 96);
+  --color-line: oklch(0.87 0.006 96);
+  --color-panel: oklch(0.935 0.006 96);
+  --color-pill: oklch(0.27 0.01 96);
+  --color-pill-ink: oklch(0.958 0.006 96);
+  --color-error: oklch(0.5 0.19 27);
+  --color-ok: oklch(0.45 0.12 150);
+  --color-focus: oklch(0.5 0.16 255);
+
+  /* type */
+  --font-sans: "Inter Variable", "Inter Fallback", system-ui, sans-serif;
+  --font-ui: system-ui, sans-serif;
+  --leading-body: 1.65;
+
+  /* space */
+  --space-gutter: clamp(1.25rem, 5vw, 3rem);
+  --space-section: clamp(4rem, 12vw, 8rem);
+  --width-content: 68rem;
+  --width-prose: 44rem;
+
+  /* misc */
+  --radius-pill: 999px;
+  --radius-box: 0.5rem;
+}

@@ -1,54 +1,44 @@
-# Phillip Cantu Portfolio + Blog
+# phillipcantu.com
 
-> **Full Sail University – Web Development Degree**  
-> **Student:** Phillip Cantu  
-> **ID:** 0005394162  
-> **Email:** <pvcantu@student.fullsail.edu>
+Personal portfolio and blog for **Phillip Cantu** — full-stack developer and U.S. Army veteran.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Live at [phillipcantu.com](https://phillipcantu.com), deployed on Vercel.
 
-## 📘 Overview
+## Stack
 
-This project was built as part of **Full Sail University’s WDV463 – Deployment of Web Applications – Online** course.  
-It serves as both a **personal portfolio** and a **blog**, built with **Next.js 16**, **Tailwind CSS**, and **MDX**.
+- [Astro](https://astro.build) — static-first framework; every page is prerendered HTML
+- [SolidJS](https://www.solidjs.com) — hydrates exactly one island: the contact form
+- TypeScript everywhere, vanilla CSS with `oklch` design tokens (no CSS framework)
+- MDX blog via Astro Content Collections
+- Nodemailer + Zoho SMTP behind a single serverless endpoint (`/api/contact`)
 
-> _Last updated: November 30, 2025_
+## Performance choices
 
-## 💻 Deployment
+- Zero client-side JavaScript except the contact form island (`client:visible`, so it only loads when scrolled into view)
+- Self-hosted, subset Inter variable font with preload + a metrics-adjusted fallback (no layout shift)
+- Build-time image optimization via `astro:assets` / sharp
+- Inlined critical CSS, static HTML from the CDN edge
 
-This application is continuously deployed on Vercel and available at:
+## Commands
 
-- <https://deploy-web-apps.vercel.app/>deploy-web-apps.vercel.app</a>
-- <https://phillipcantu.com/>phillipcantu.com</a>
+| Command           | Action                                    |
+| ----------------- | ----------------------------------------- |
+| `npm install`     | Install dependencies                      |
+| `npm run dev`     | Dev server at `localhost:4321`            |
+| `npm run check`   | Type-check (`astro check`)                |
+| `npm run build`   | Production build to `.vercel/output/`     |
 
-## 📝 MDX Resources Used
+## Environment
 
-These resources directly supported the setup and customization of MDX:
+The contact form needs two variables (see `.env.example`):
 
-- **Next.js MDX Documentation:**  
-  <https://nextjs.org/docs/app/guides/mdx>
+```
+SMTP_USER=
+SMTP_PASS=
+```
 
-- **YouTube – Lee Robinson (@leerob): “MDX with Next.js App Router”**  
-  <https://www.youtube.com/watch?v=34bRv6cQezo>
+They're already configured in the Vercel project.
 
-- **YouTube – Alex (@apestein-dev): “Best Way to Use Markdown in Next.js (Blogs/Docs)”**  
-  <https://www.youtube.com/watch?v=0pEbT-NwmHk>
+## Content
 
-## 🔧 Recent Commit Highlights
-
-A summarized, human-readable version of the progression of this project:
-
-- Created & integrated **Navbar** into `layout.tsx`
-- Added `/blog` page with initial routing
-- Style updates and Tailwind cleanup
-- Added **Footer**, removed default boilerplate styles, improved Tailwind structure
-- Created **Hero** section and improved responsive layout
-- Set up **MDX** and created the first blog post
-- Added blog listing using an array of post objects
-- Improved mobile styles and adjusted configuration for real device testing
-- UI/UX refinements, semantic improvements, and layout polish
-- Root layout updates including improved `<main>` behavior
-
----
-
-Thanks for checking out the project — this portfolio/blog will continue to evolve as I grow as a developer.
+Blog posts live in `src/content/blog/<slug>/index.mdx` with images colocated. Frontmatter schema is defined in `src/content.config.ts`. Site-wide data (socials, projects, skills) lives in `src/data/`.

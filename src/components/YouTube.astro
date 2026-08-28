@@ -1,0 +1,56 @@
+---
+interface Props {
+  videoId: string;
+  title: string;
+}
+
+const { videoId, title } = Astro.props;
+---
+
+<figure class="yt">
+  <div class="frame">
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+      title={title}
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+  </div>
+  <figcaption>
+    <a
+      href={`https://www.youtube.com/watch?v=${videoId}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Watch the full video tutorial on YouTube
+    </a>
+  </figcaption>
+</figure>
+
+<style>
+  .yt {
+    margin-block: 2rem;
+  }
+
+  .frame {
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-box);
+    overflow: hidden;
+    border: 1px solid var(--color-line);
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  figcaption {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    text-align: center;
+    margin-block-start: 0.75rem;
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import { SITE } from "../data/site";
+import SocialRail from "./SocialRail.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container inner">
+    <p>&copy; {year} {SITE.name}</p>
+    <SocialRail variant="row" />
+    <p class="meta">
+      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      <span aria-hidden="true">·</span>
+      <a href="/rss.xml">RSS</a>
+      <span aria-hidden="true">·</span>
+      <a
+        href="https://github.com/CantuPhillip-FS/phillipcantu.com"
+        target="_blank"
+        rel="noopener noreferrer">View this site's public repo</a
+      >
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-block-start: var(--space-section);
+    border-block-start: 1px solid var(--color-line);
+    padding-block: 2rem;
+  }
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  p {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
+  .meta {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .meta a {
+    color: var(--color-muted);
+  }
+
+  .meta a:hover {
+    color: var(--color-ink);
+  }
+
+  @media (min-width: 48em) {
+    .inner {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: start;
+    }
+  }
+</style>

@@ -1,0 +1,75 @@
+---
+const { pathname } = Astro.url;
+const onHome = pathname === "/";
+---
+
+<header class="header">
+  <div class="container bar">
+    <a class="wordmark" href="/" aria-label="Phillip Cantu — home">
+      <img src="/favicon.svg" alt="" width="32" height="32" />
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/" aria-current={onHome ? "page" : undefined}>Home</a></li>
+        <li>
+          <a
+            href="/blog/"
+            aria-current={pathname.startsWith("/blog") ? "page" : undefined}
+            >Blog</a
+          >
+        </li>
+        <li><a href={onHome ? "#contact" : "/#contact"}>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    padding-block: 1.25rem;
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .wordmark {
+    display: block;
+    line-height: 0;
+  }
+
+  .wordmark img {
+    border-radius: 6px;
+  }
+
+  .wordmark:hover img {
+    opacity: 0.8;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: clamp(1rem, 3vw, 2rem);
+    padding: 0;
+  }
+
+  nav a {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+
+  nav a:hover,
+  nav a[aria-current="page"] {
+    color: var(--color-ink);
+  }
+
+  nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+</style>

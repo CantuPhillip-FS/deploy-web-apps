@@ -1,0 +1,93 @@
+---
+import { SITE } from "../data/site";
+---
+
+<section class="hero container" aria-label="Introduction">
+  <p class="eyebrow">Full-Stack Developer · U.S. Army Veteran</p>
+  <h1>
+    <span>Phillip</span>
+    <span>Cantu</span>
+  </h1>
+  <div class="under">
+    <span class="arrow" aria-hidden="true">&#8600;</span>
+    <p class="intro">
+      I build fast, clean web and mobile apps end to end — typed frontends,
+      solid APIs, and deployments that just work.
+    </p>
+  </div>
+  <div class="cta">
+    <a class="pill" href="#contact">Contact <span aria-hidden="true">&#8599;</span></a>
+    <a class="pill pill--ghost" href="/docs/resume.pdf">Resume</a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block-start: clamp(2.5rem, 8vw, 5rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-block-end: 1rem;
+  }
+
+  /* Stacked two-line name on mobile; sized so "PHILLIP" (~3.5em wide) fills the gutter width */
+  h1 {
+    font-size: clamp(3.7rem, 24vw, 11rem);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .under {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-block-start: clamp(1.5rem, 5vw, 3.5rem);
+  }
+
+  .arrow {
+    font-size: 1.5rem;
+    color: var(--color-muted);
+    line-height: 1.3;
+  }
+
+  .intro {
+    max-width: 30ch;
+    font-size: clamp(1.0625rem, 2vw, 1.25rem);
+    color: var(--color-muted);
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-block-start: 2rem;
+  }
+
+  .place {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-soft);
+    margin-block-start: 2.5rem;
+  }
+
+  /* One line, both words pushed to the container edges; "PHILLIP CANTU" measures
+     ~6.9em at this weight/tracking. 12.4vw (not 12.8) leaves room for a classic
+     scrollbar, which vw units include but the container layout does not. */
+  @media (min-width: 48em) {
+    h1 {
+      flex-direction: row;
+      justify-content: space-between;
+      font-size: clamp(3.7rem, 12.4vw, 8.9rem);
+    }
+  }
+</style>

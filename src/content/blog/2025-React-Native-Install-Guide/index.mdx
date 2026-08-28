@@ -1,0 +1,812 @@
+---
+title: "Complete React Native Installation Guide 2025 with Expo on macOS"
+description: "A comprehensive step-by-step tutorial for installing and setting up React Native with Expo, Xcode, and NativeWind on macOS Tahoe."
+pubDate: 2025-12-12
+tags:
+  - "React Native"
+  - "Expo"
+  - "macOS"
+  - "iOS Simulator"
+  - "Xcode"
+  - "NativeWind"
+  - "Tailwind CSS"
+  - "TypeScript"
+  - "Mobile Development"
+  - "React Navigation"
+---
+
+import YouTube from "../../../components/YouTube.astro";
+
+<YouTube
+    videoId="pFI5TJT-OJw"
+    title="2025 React Native FULL INSTALL Guide with Expo on macOS Tahoe with Nativewind Tailwind CSS"
+/>
+
+## Setting Up React Native with Expo on macOS Tahoe
+
+Welcome to the complete guide for installing and running React Native on your MacBook in 2025! This tutorial covers everything from installing the necessary tools to creating your first app with navigation and styling. Whether you're completely new to React Native or just need an updated setup guide, this comprehensive walkthrough has you covered.
+
+## Prerequisites
+
+Before we begin, you'll need:
+
+- A MacBook running macOS (this guide uses macOS Tahoe)
+- Administrator access to your computer
+- A stable internet connection
+- At least 15-20 GB of free disk space (for Xcode)
+
+## Part 1: Installing Homebrew
+
+Homebrew is a package manager for macOS that makes installing development tools much easier. Even if you think you already have it installed, there's no harm in running the installation command again.
+
+### Steps:
+
+1. Open **Terminal** (you can find it using Spotlight search: `Cmd + Space`, then type "Terminal")
+
+2. Visit [brew.sh](https://brew.sh) and copy the installation command
+
+3. Paste the command into your Terminal and press Enter
+
+4. When prompted, enter your Mac's password
+
+5. Press Enter to continue when it shows what will be installed
+
+6. If prompted, agree to install the Xcode Command Line Tools
+
+### Important Post-Installation Step
+
+After Homebrew installs for the first time, you'll see instructions to add Homebrew to your PATH. This is **required** for Homebrew to work properly. You'll need to run 2-3 commands that look similar to this:
+
+```bash
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+Copy and paste these commands exactly as shown in your Terminal output.
+
+### Verify Installation
+
+To confirm Homebrew is working correctly, run:
+
+```bash
+brew help
+```
+
+## Part 2: Installing Node.js
+
+Node.js is the JavaScript runtime that powers React Native development. We'll use Homebrew to install it.
+
+### Steps:
+
+1. Visit [nodejs.org](https://nodejs.org) to see the latest version
+
+2. Install Node.js using Homebrew:
+
+```bash
+brew install node
+```
+
+3. Verify the installation by checking both Node.js and npm versions:
+
+```bash
+node -v
+npm -v
+```
+
+You should see version numbers for both commands, confirming successful installation.
+
+## Part 3: Setting Up Visual Studio Code
+
+VS Code is the recommended IDE for React Native development. If you're using Vim or NeoVim, feel free to skip this section.
+
+### Installation:
+
+1. Visit [code.visualstudio.com](https://code.visualstudio.com)
+
+2. Download VS Code for macOS
+
+3. **Important**: Once downloaded, the file you get is the actual app, not an installer
+
+### Crucial Installation Step
+
+Many beginners make this mistake: **don't just double-click the downloaded file!**
+
+Instead:
+
+1. Open your Downloads folder
+2. Drag and drop the Visual Studio Code app to your **Applications** folder
+3. Now open VS Code from Applications
+
+If you skip this step and run VS Code directly from Downloads, you'll encounter problems later in development.
+
+## Part 4: Installing Xcode and iOS Simulator
+
+Xcode provides the iOS Simulator and developer tools needed for React Native development on Mac. This is a large download (12+ GB), so be prepared to wait.
+
+### Initial Installation:
+
+1. Open the **App Store** on your Mac
+
+2. Search for "Xcode"
+
+3. Click **Get** (then **Install**)
+
+4. Wait for the 12 GB download and installation to complete
+
+### Post-Installation Setup:
+
+After Xcode installs:
+
+1. Open Xcode for the first time
+
+2. Agree to the license agreements
+
+3. Enter your Mac password when prompted
+
+4. Install additional components when prompted:
+    - iOS Simulator (required)
+    - Additional platforms (optional, but **NOT** recommended)
+    - iOS Simulator (required)
+    - Additional platforms (optional, but **NOT** recommended)
+
+### Installing iOS Simulator Components
+
+If you already had Xcode installed but need to add the iOS Simulator:
+
+1. Open Xcode
+
+2. Go to **Settings** (at the top menu bar)
+
+3. Navigate to **Components** on the left sidebar
+
+4. Find **iOS** in the list
+
+5. Click **Get** to download and install the iOS Simulator
+
+6. Wait for the installation to complete (about 10 more GB)
+
+## Part 5: Creating Your First React Native Project
+
+Now that all prerequisites are installed, let's create your first React Native app using Expo!
+
+### What is Expo?
+
+Expo is a framework that simplifies React Native development. It's the officially recommended way to start new React Native projects and handles much of the complex configuration for you.
+
+### Create a New Project:
+
+1. Open Terminal and navigate to where you want to create your project
+
+2. Run the following command with TypeScript support:
+
+```bash
+npx create-expo-app react-native-demo --template blank-typescript
+```
+
+Breaking down this command:
+
+- `npx create-expo-app` - Creates a new Expo app
+- `react-native-demo` - Your project name
+- `--template blank-typescript` - Uses TypeScript template
+
+3. Wait for the project to be created and dependencies to install
+
+4. Navigate into your project:
+
+```bash
+cd react-native-demo
+```
+
+5. Open the project in VS Code:
+
+```bash
+code .
+```
+
+## Part 6: Running Your First App
+
+Let's see your app running in the iOS Simulator!
+
+### Starting the Development Server:
+
+In your Terminal (within the project directory), run:
+
+```bash
+npm run start
+```
+
+This starts the Expo development server. You'll see a QR code and several options:
+
+- Press **`i`** to open iOS Simulator
+- Press **`a`** to open Android Emulator (if you have it set up)
+- Press **`w`** to open in web browser
+- Scan the QR code with the Expo Go app on your physical device
+
+### Opening iOS Simulator:
+
+1. Press **`i`** in the Terminal
+
+2. The iOS Simulator will launch (this may take a moment the first time)
+
+3. Expo Go will automatically install in the simulator
+
+4. You may see a popup asking if Terminal can control System Events - click **Allow**
+
+5. Your app should now be running!
+
+You should see the default Expo app with the text "Open up App.tsx to start working on your app!"
+
+## Part 7: Understanding the Project Structure
+
+Let's explore what was created:
+
+```
+react-native-demo/
+├── app.tsx              # Main app component
+├── package.json         # Dependencies and scripts
+├── tsconfig.json        # TypeScript configuration
+├── node_modules/        # Installed dependencies
+└── assets/              # Images and other assets
+```
+
+### App.tsx Breakdown:
+
+Open `app.tsx` to see your main component:
+
+```typescript
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.tsx to start working on your app!</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+```
+
+## Part 8: Making Your First Changes
+
+Let's modify the app to see hot reloading in action!
+
+### Update the Text:
+
+In `app.tsx`, change the Text component:
+
+```typescript
+<Text>Hello World!</Text>
+```
+
+Save the file (`Cmd + S`), and watch the simulator update instantly! This is hot reloading - one of the best features of React Native development.
+
+### Understanding React Native Styling
+
+React Native uses a StyleSheet API instead of traditional CSS. Let's modify the styles:
+
+```typescript
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#000", // Black background
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    text: {
+        color: "red",
+        fontSize: 24,
+    },
+    container: {
+        flex: 1,
+        backgroundColor: "#000", // Black background
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    text: {
+        color: "red",
+        fontSize: 24,
+    },
+});
+```
+
+Apply the text style:
+
+```typescript
+<Text style={styles.text}>Hello World!</Text>
+```
+
+### Key Differences from Web Development:
+
+- No DOM elements (`<div>`, `<span>`, etc.)
+- Use `<View>` instead of `<div>`
+- Use `<Text>` for all text content
+- Use `<Image>` for images
+- Style properties are camelCase (e.g., `backgroundColor` not `background-color`)
+- Values are strings or numbers, not CSS units
+
+## Part 9: Working with React Native Components
+
+React Native provides built-in components that map to native iOS and Android elements.
+
+### Adding a Button:
+
+```typescript
+import { StyleSheet, Text, View, Button } from "react-native";
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Hello World!</Text>
+      <Button title="Learn More" onPress={() => alert("Button pressed!")} />
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+```
+
+Important: Buttons in React Native use `onPress` instead of `onClick`, and the button text is passed via the `title` prop (not as children).
+
+### Essential Components to Learn:
+
+Visit [reactnative.dev/docs/components-and-apis](https://reactnative.dev/docs/components-and-apis) to explore:
+
+- **View** - Container component (like `<div>`)
+- **Text** - Text display
+- **Image** - Images
+- **ScrollView** - Scrollable container
+- **TextInput** - Text input field
+- **Button** - Basic button
+- **TouchableOpacity** - Customizable touchable element
+- **FlatList** - Performant list component
+
+## Part 10: Setting Up Navigation
+
+Most apps need multiple screens. Let's add navigation using React Navigation.
+
+### Install React Navigation:
+
+Run these commands in your Terminal:
+
+```bash
+npm install @react-navigation/native @react-navigation/native-stack
+npx expo install react-native-screens react-native-safe-area-context
+```
+
+### Create a Pages Folder:
+
+1. Create a new folder called `pages` in your project root
+
+2. Create `home.tsx` inside the pages folder:
+
+```typescript
+import { StyleSheet, Text, View, Button } from "react-native";
+
+export default function Home({ navigation }: any) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Home Page</Text>
+      <Button title="About Us" onPress={() => navigation.navigate("About")} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 24,
+  },
+});
+```
+
+3. Create `about.tsx` inside the pages folder:
+
+```typescript
+import { StyleSheet, Text, View, Button } from "react-native";
+
+export default function About({ navigation }: any) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>About Page</Text>
+      <Button title="Go Home" onPress={() => navigation.navigate("Home")} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 24,
+  },
+});
+```
+
+### Set Up Navigation in App.tsx:
+
+Replace your `app.tsx` content with:
+
+```typescript
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import Home from "./pages/home";
+import About from "./pages/about";
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ title: "React Native Demo" }}
+          />
+          <Stack.Screen
+            name="About"
+            component={About}
+            options={{ title: "About Us" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+}
+```
+
+Save and watch your app reload! You now have navigation working. Try clicking the buttons to navigate between screens.
+
+### Understanding Stack Navigation:
+
+Stack navigation works like a stack of cards:
+
+- Each new screen is placed on top
+- The back button pops the current screen off
+- Navigation history is maintained automatically
+
+## Part 11: Adding TypeScript Types
+
+Let's fix those TypeScript errors by adding proper types to our navigation.
+
+### Create Types File:
+
+Create `types.ts` in your project root:
+
+```typescript
+export type StackParamList = {
+    Home: undefined;
+    About: undefined;
+    Home: undefined;
+    About: undefined;
+};
+```
+
+### Update Home.tsx:
+
+```typescript
+import { StyleSheet, Text, View, Button } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { StackParamList } from "../types";
+
+type HomeScreenProps = NativeStackScreenProps<StackParamList, "Home">;
+
+export default function Home({ navigation }: HomeScreenProps) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Home Page</Text>
+      <Button title="About Us" onPress={() => navigation.navigate("About")} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 24,
+  },
+});
+```
+
+### Update About.tsx:
+
+```typescript
+import { StyleSheet, Text, View, Button } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { StackParamList } from "../types";
+
+type AboutScreenProps = NativeStackScreenProps<StackParamList, "About">;
+
+export default function About({ navigation }: AboutScreenProps) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>About Page</Text>
+      <Button title="Go Home" onPress={() => navigation.navigate("Home")} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 24,
+  },
+});
+```
+
+### Update App.tsx:
+
+```typescript
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import type { StackParamList } from "./types";
+import Home from "./pages/home";
+import About from "./pages/about";
+
+const Stack = createNativeStackNavigator<StackParamList>();
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ title: "React Native Demo" }}
+          />
+          <Stack.Screen
+            name="About"
+            component={About}
+            options={{ title: "About Us" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+}
+```
+
+Now TypeScript will provide full type safety and autocomplete for your navigation!
+
+## Part 12: Setting Up NativeWind (Tailwind CSS)
+
+If you love Tailwind CSS, NativeWind brings that same utility-first approach to React Native.
+
+### Create a New Project with NativeWind:
+
+The easiest way to use NativeWind is to start a new project with it pre-configured:
+
+```bash
+npx rn-new --nativewind
+```
+
+### Navigate and Start:
+
+```bash
+cd my-expo-app
+code .
+npm run start
+```
+
+Press **`i`** to open the iOS Simulator.
+
+### Fixing the Safe Area Warning:
+
+You might see a warning about `react-native-safe-area-context`. The library is already installed, but there's an import issue.
+
+In `components/Container.tsx`, fix the import:
+
+```typescript
+import { SafeAreaView } from "react-native-safe-area-context";
+```
+
+Instead of importing from 'react-native'.
+
+### Using NativeWind:
+
+Now you can use Tailwind classes in your React Native components!
+
+Example:
+
+```typescript
+import { Text, View } from "react-native";
+
+export default function Home() {
+  return (
+    <View className="flex-1 items-center justify-center bg-white">
+      <Text className="text-3xl text-amber-500 font-bold">Hello World!</Text>
+    </View>
+  );
+}
+```
+
+Notice how we use `className` just like in regular React/Tailwind projects!
+
+### NativeWind Features:
+
+- All standard Tailwind utilities
+- Responsive design with breakpoints
+- Dark mode support
+- Custom themes
+- Full TypeScript support
+
+## Styling Approaches in React Native
+
+You have three main options for styling:
+
+### 1. StyleSheet API (Built-in):
+
+```typescript
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#000",
+    },
+    container: {
+        flex: 1,
+        backgroundColor: "#000",
+    },
+});
+```
+
+**Pros**: No dependencies, optimized, type-safe
+
+**Cons**: Verbose, no utilities
+
+### 2. Inline Styles:
+
+```typescript
+<View style={{ flex: 1, backgroundColor: '#000' }}>
+```
+
+**Pros**: Quick for prototyping
+
+**Cons**: Not optimized, harder to maintain
+
+### 3. NativeWind (Tailwind):
+
+```typescript
+<View className="flex-1 bg-black">
+```
+
+**Pros**: Fast development, familiar if you know Tailwind, consistent design
+
+**Cons**: Additional dependency, slight learning curve
+
+Choose based on your preference and project needs!
+
+## Essential Commands Reference
+
+Here's a quick reference of the commands you'll use regularly:
+
+```bash
+# Start development server
+npm run start
+
+# Run on iOS Simulator
+npm run ios
+
+# Run on Android Emulator
+npm run android
+
+# Run in web browser
+npm run web
+
+# Install dependencies
+npm install
+
+# Install Expo packages
+npx expo install package-name
+```
+
+## Common Keyboard Shortcuts in Terminal
+
+When the Expo development server is running:
+
+- **`r`** - Reload app
+- **`m`** - Toggle menu
+- **`i`** - Open iOS Simulator
+- **`a`** - Open Android Emulator
+- **`w`** - Open in web browser
+- **`j`** - Open debugger
+- **`Ctrl + C`** - Stop server
+
+## Troubleshooting Common Issues
+
+### iOS Simulator Won't Open
+
+1. Make sure Xcode is fully installed
+2. Open Xcode and accept all agreements
+3. Verify iOS Simulator is installed in Xcode Settings > Components
+4. Try running `npm run ios` instead
+
+### Hot Reload Not Working
+
+1. Press `r` in the terminal to manually reload
+2. Try stopping and restarting the dev server (`Ctrl + C`, then `npm run start`)
+3. Clear the cache: `npx expo start -c`
+
+### TypeScript Errors
+
+1. Make sure all dependencies are installed: `npm install`
+2. Check that your `tsconfig.json` is properly configured
+
+### "Command not found" Errors
+
+1. Make sure Homebrew is in your PATH (see Part 1)
+2. Close and reopen Terminal
+3. Try running the Homebrew setup commands again
+
+## Next Steps
+
+Now that you have React Native set up, here's what to explore next:
+
+1. **Learn React Native Components**: Study the official documentation at [reactnative.dev](https://reactnative.dev)
+
+2. **Build a Real App**: Start with a simple todo list or notes app
+
+3. **Explore State Management**: Learn about React hooks (useState, useEffect, useContext) or libraries like Redux
+
+4. **Try Different Navigation Patterns**: Explore tabs, drawers, and modals with React Navigation
+
+5. **Add Native Features**: Try using the camera, location services, or notifications
+
+6. **Deploy Your App**: Learn how to build and submit to the App Store and Play Store
+
+## Resources
+
+- **React Native Docs**: [reactnative.dev](https://reactnative.dev)
+- **Expo Docs**: [docs.expo.dev](https://docs.expo.dev)
+- **React Navigation**: [reactnavigation.org](https://reactnavigation.org)
+- **NativeWind**: [nativewind.dev](https://nativewind.dev)
+- **TypeScript**: [typescriptlang.org](https://www.typescriptlang.org)
+
+## Conclusion
+
+Congratulations! You now have a complete React Native development environment set up on your Mac. You've learned how to:
+
+- Install all necessary tools (Homebrew, Node.js, Xcode, VS Code)
+- Create and run React Native apps with Expo
+- Navigate between screens
+- Style components using both StyleSheet and NativeWind
+- Add TypeScript types for better development experience
+
+The best way to learn is by building. Start small, experiment with components, and gradually build more complex features. The React Native community is large and helpful, so don't hesitate to search for solutions when you get stuck.
+
+Happy coding, and enjoy building amazing mobile apps with React Native!
+
+---
+
+_Last updated: December 12, 2025_
