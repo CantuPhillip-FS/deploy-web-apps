@@ -15,7 +15,8 @@ export default defineConfig({
   },
   markdown: {
     shikiConfig: {
-      theme: "github-light",
+      // The regular github-light theme's orange tokens fail WCAG AA contrast
+      theme: "github-light-high-contrast",
     },
   },
 });
