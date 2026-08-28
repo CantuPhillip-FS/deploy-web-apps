@@ -23,6 +23,7 @@ export const PROJECTS: Project[] = [
       "Full-stack MERN job and opportunity tracker — typed end to end, containerized with Docker, and deployed across Vercel and Render.",
     tech: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Docker"],
     repo: "https://github.com/hereisphil/app-track",
+    live: "https://app-track-frontend.vercel.app/",
   },
   {
     name: "ClientPulse",

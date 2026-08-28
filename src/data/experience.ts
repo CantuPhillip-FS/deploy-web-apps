@@ -5,6 +5,8 @@ export type Role = {
   period: string;
   location: string;
   highlights: string[];
+  /** Optional link to a full write-up page */
+  more?: { href: string; label: string };
 };
 
 export const EXPERIENCE: Role[] = [
@@ -20,6 +22,7 @@ export const EXPERIENCE: Role[] = [
       "Rebuilt the company's AI agent (hgraph.ai) as a full-stack streaming product: an SSE chat backend, a persistent thread store under RLS, org-scoped spend ceilings, and credential isolation so API keys never reach the browser.",
       "Delivered the customer-facing API usage dashboard from ClickHouse SQL through GraphQL resolvers to the React interface, adding bloom-filter skip indexes and bounded joins so tenant-scoped queries stopped scanning every granule.",
     ],
+    more: { href: "/hgraph/", label: "Read the full work record" },
   },
   {
     title: "Software Engineering Apprentice",

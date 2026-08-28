@@ -33,6 +33,15 @@ import { EXPERIENCE } from "../data/experience";
               <li>{h}</li>
             ))}
           </ul>
+          {
+            role.more && (
+              <p class="more">
+                <a href={role.more.href}>
+                  {role.more.label} <span aria-hidden="true">&#8594;</span>
+                </a>
+              </p>
+            )
+          }
         </li>
       ))
     }
@@ -94,5 +103,14 @@ import { EXPERIENCE } from "../data/experience";
     position: absolute;
     inset-inline-start: 0;
     color: var(--color-soft);
+  }
+
+  .more {
+    margin-block-start: 1.25rem;
+    font-family: var(--font-ui);
+  }
+
+  .more a {
+    color: var(--color-ink);
   }
 </style>

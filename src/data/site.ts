@@ -6,7 +6,6 @@ export const SITE = {
   url: "https://phillipcantu.com",
   email: "hello@phillipcantu.com",
   role: "Full-Stack Developer",
-  location: "Arizona, USA",
   socials: {
     github: "https://github.com/hereisphil",
     linkedin: "https://www.linkedin.com/in/phillipcantu/",
