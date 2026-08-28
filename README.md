@@ -7,14 +7,12 @@ Live at [phillipcantu.com](https://phillipcantu.com), deployed on Vercel.
 ## Stack
 
 - [Astro](https://astro.build) — static-first framework; every page is prerendered HTML
-- [SolidJS](https://www.solidjs.com) — hydrates exactly one island: the contact form
 - TypeScript everywhere, vanilla CSS with `oklch` design tokens (no CSS framework)
 - MDX blog via Astro Content Collections
-- Nodemailer + Zoho SMTP behind a single serverless endpoint (`/api/contact`)
 
 ## Performance choices
 
-- Zero client-side JavaScript except the contact form island (`client:visible`, so it only loads when scrolled into view)
+- Zero client-side JavaScript — no frameworks hydrate anything (the one inline script on `/hgraph` drives its scroll animations)
 - Self-hosted, subset Inter variable font with preload + a metrics-adjusted fallback (no layout shift)
 - Build-time image optimization via `astro:assets` / sharp
 - Inlined critical CSS, static HTML from the CDN edge
@@ -27,17 +25,6 @@ Live at [phillipcantu.com](https://phillipcantu.com), deployed on Vercel.
 | `npm run dev`     | Dev server at `localhost:4321`            |
 | `npm run check`   | Type-check (`astro check`)                |
 | `npm run build`   | Production build to `.vercel/output/`     |
-
-## Environment
-
-The contact form needs two variables (see `.env.example`):
-
-```
-SMTP_USER=
-SMTP_PASS=
-```
-
-They're already configured in the Vercel project.
 
 ## Content
 
