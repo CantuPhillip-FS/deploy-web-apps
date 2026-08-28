@@ -1,13 +1,13 @@
 ---
-import { SITE } from "../data/site";
-
 const { pathname } = Astro.url;
 const onHome = pathname === "/";
 ---
 
 <header class="header">
   <div class="container bar">
-    <a class="wordmark" href="/">{SITE.role}</a>
+    <a class="wordmark" href="/" aria-label="Phillip Cantu — home">
+      <img src="/favicon.svg" alt="" width="32" height="32" />
+    </a>
     <nav aria-label="Main">
       <ul>
         <li><a href="/" aria-current={onHome ? "page" : undefined}>Home</a></li>
@@ -37,14 +37,16 @@ const onHome = pathname === "/";
   }
 
   .wordmark {
-    font-family: var(--font-ui);
-    font-size: 0.9375rem;
-    color: var(--color-muted);
-    text-decoration: none;
+    display: block;
+    line-height: 0;
   }
 
-  .wordmark:hover {
-    color: var(--color-ink);
+  .wordmark img {
+    border-radius: 6px;
+  }
+
+  .wordmark:hover img {
+    opacity: 0.8;
   }
 
   nav ul {

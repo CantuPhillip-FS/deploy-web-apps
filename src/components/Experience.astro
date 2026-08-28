@@ -1,0 +1,98 @@
+---
+import { EXPERIENCE } from "../data/experience";
+---
+
+<section
+  class="section container"
+  id="experience"
+  aria-labelledby="experience-heading"
+>
+  <h2 class="label" id="experience-heading">Experience</h2>
+  <ul class="roles">
+    {
+      EXPERIENCE.map((role) => (
+        <li class="role">
+          <div class="head">
+            <h3>{role.title}</h3>
+            <p class="meta">
+              {role.companyUrl ? (
+                <a href={role.companyUrl} target="_blank" rel="noopener noreferrer">
+                  {role.company}
+                </a>
+              ) : (
+                role.company
+              )}
+              <span aria-hidden="true">·</span>
+              {role.period}
+              <span aria-hidden="true">·</span>
+              {role.location}
+            </p>
+          </div>
+          <ul class="highlights">
+            {role.highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .roles {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .role {
+    padding-block: 2.5rem;
+    border-block-start: 1px solid var(--color-line);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 3.5vw, 1.625rem);
+    letter-spacing: -0.015em;
+  }
+
+  .meta {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block-start: 0.4rem;
+  }
+
+  .meta a {
+    color: var(--color-muted);
+  }
+
+  .meta a:hover {
+    color: var(--color-ink);
+  }
+
+  .highlights {
+    list-style: none;
+    padding: 0;
+    margin-block-start: 1.25rem;
+    display: grid;
+    gap: 0.75rem;
+    max-width: 62ch;
+  }
+
+  .highlights li {
+    color: var(--color-muted);
+    padding-inline-start: 1.25rem;
+    position: relative;
+  }
+
+  .highlights li::before {
+    content: "—";
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--color-soft);
+  }
+</style>

@@ -4,10 +4,6 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "jsxImportSource": "solid-js"
   }
 }

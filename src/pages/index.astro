@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PersonJsonLd from "../components/jsonld/PersonJsonLd.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import Skills from "../components/Skills.astro";
 import PostCard from "../components/PostCard.astro";
@@ -20,6 +21,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft))
   <PersonJsonLd slot="head" />
   <Hero />
   <About />
+  <Experience />
 
   <section class="section container" id="work" aria-labelledby="work-heading">
     <h2 class="label" id="work-heading">Selected Work</h2>
