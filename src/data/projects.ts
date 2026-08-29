@@ -25,12 +25,4 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/hereisphil/app-track",
     live: "https://app-track-frontend.vercel.app/",
   },
-  {
-    name: "ClientPulse",
-    blurb:
-      "Client-management app built three ways from one API: a React web app, a React Native mobile build, and an auth-hardened variant with JWT-protected routes.",
-    tech: ["React", "React Native", "TypeScript", "Express", "MongoDB"],
-    repo: "https://github.com/hereisphil/clientpulse",
-    live: "https://clientpulse-frontend.vercel.app/",
-  },
 ];
