@@ -25,6 +25,11 @@ html {
   color-scheme: light;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -105,6 +110,7 @@ textarea {
 /* Shared primitives */
 .container {
   max-width: var(--width-content);
+  width: 100%;
   margin-inline: auto;
   padding-inline: var(--space-gutter);
 }

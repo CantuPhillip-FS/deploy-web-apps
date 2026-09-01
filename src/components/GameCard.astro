@@ -1,0 +1,193 @@
+---
+import type { Game } from "../data/games";
+
+interface Props {
+  game: Game;
+  index: number;
+  featured?: boolean;
+}
+
+const { game, index, featured = false } = Astro.props;
+const number = String(index + 1).padStart(2, "0");
+const style = game.coverBg ? `--cover-bg: ${game.coverBg}` : undefined;
+---
+
+<li class:list={[{ featured }]}>
+  <a
+    class="card"
+    href={game.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={style}
+  >
+    <div class="cover">
+      <slot name="cover">
+        <span class="fallback">{game.name.slice(0, 1)}</span>
+      </slot>
+    </div>
+    <div class="body">
+      <div class="head">
+        <span class="number" aria-hidden="true">{number}</span>
+        <h2>{game.name}</h2>
+        {
+          game.note && (
+            <span class="note">
+              {game.year} · {game.note}
+            </span>
+          )
+        }
+      </div>
+      <p class="tagline">{game.tagline}</p>
+      <p class="blurb">{game.blurb}</p>
+      <ul class="tech" aria-label="Made with">
+        {game.tech.map((t) => <li>{t}</li>)}
+      </ul>
+      <span class="cta">
+        Visit site <span aria-hidden="true">&#8599;</span>
+        <span class="visually-hidden">(opens in a new tab)</span>
+      </span>
+    </div>
+  </a>
+</li>
+
+<style>
+  .card {
+    display: grid;
+    height: 100%;
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-box);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.16s ease;
+  }
+
+  .card:hover,
+  .card:focus-visible {
+    border-color: var(--color-ink);
+  }
+
+  .cover {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    min-width: 0;
+    background: var(--cover-bg, oklch(0.16 0.01 96));
+    overflow: hidden;
+  }
+
+  .cover :global(svg) {
+    width: 78%;
+    height: auto;
+    max-height: 11rem;
+  }
+
+  .fallback {
+    font-size: 4rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--color-soft);
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 1.25rem 1.35rem 1.4rem;
+  }
+
+  .head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .number {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    color: var(--color-soft);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 3.2vw, 2.35rem);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .note {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    padding: 0.2em 0.8em;
+  }
+
+  .tagline {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin-block-start: 0.85rem;
+  }
+
+  .blurb {
+    color: var(--color-muted);
+    margin-block-start: 0.5rem;
+    max-width: 52ch;
+  }
+
+  .tech {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin-block-start: 1rem;
+  }
+
+  .tech li {
+    font-family: var(--font-ui);
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-soft);
+  }
+
+  .cta {
+    display: inline-block;
+    margin-block-start: auto;
+    padding-block-start: 1rem;
+    font-family: var(--font-ui);
+    color: var(--color-ink);
+  }
+
+  .card:hover h2,
+  .card:focus-visible h2 {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.15em;
+  }
+
+  @media (min-width: 40em) {
+    .featured .card {
+      grid-template-columns: 10.5rem minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .featured .cover {
+      aspect-ratio: auto;
+    }
+
+    .featured .body {
+      padding: 1.15rem 1.6rem 1.25rem;
+      justify-content: center;
+    }
+  }
+</style>

@@ -13,16 +13,26 @@ interface Props {
   publishedTime?: Date;
   updatedTime?: Date;
   noindex?: boolean;
+  theme?: "light" | "dark";
 }
 
-const { title, description, ogImage, type, publishedTime, updatedTime, noindex } =
-  Astro.props;
+const {
+  title,
+  description,
+  ogImage,
+  type,
+  publishedTime,
+  updatedTime,
+  noindex,
+  theme = "light",
+} = Astro.props;
 
 const fullTitle = title === SITE.title ? title : `${title} | ${SITE.name}`;
+const themeColor = theme === "dark" ? "#2c2b28" : undefined;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={theme}>
   <head>
     <BaseHead
       title={fullTitle}
@@ -32,6 +42,7 @@ const fullTitle = title === SITE.title ? title : `${title} | ${SITE.name}`;
       publishedTime={publishedTime}
       updatedTime={updatedTime}
       noindex={noindex}
+      themeColor={themeColor}
     />
     <slot name="head" />
   </head>

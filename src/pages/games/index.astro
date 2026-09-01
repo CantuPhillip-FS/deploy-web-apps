@@ -1,0 +1,246 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GameCard from "../../components/GameCard.astro";
+import BaaalanceCover from "../../components/BaaalanceCover.astro";
+import { GAMES } from "../../data/games";
+import { SITE } from "../../data/site";
+
+const title = "Games";
+const description =
+  "Browser games by Phillip Cantu, starting with BAAALANCE — a free physics game about stacking panicking sheep.";
+
+const itchGames = GAMES.filter((game) => game.playUrl);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      name: `${title} | ${SITE.name}`,
+      description,
+      url: new URL("/games/", Astro.site).href,
+      isPartOf: { "@id": `${SITE.url}/#website` },
+      author: { "@id": `${SITE.url}/#person` },
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: GAMES.length,
+        itemListElement: GAMES.map((game, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          item: {
+            "@type": "VideoGame",
+            name: game.name,
+            description: game.blurb,
+            url: game.url,
+            genre: "Physics",
+            gamePlatform: "Web browser",
+            playMode: "SinglePlayer",
+            author: { "@id": `${SITE.url}/#person` },
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+              url: game.playUrl ?? game.url,
+            },
+          },
+        })),
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE.url}/#person`,
+      name: SITE.name,
+      email: SITE.email,
+      url: SITE.url,
+    },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} theme="dark">
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+    is:inline
+  />
+  <div class="container">
+    <header class="page-header">
+      <p class="label">{SITE.name}</p>
+      <h1>Games</h1>
+      <p>
+        Free browser games by {SITE.name}. Play in your browser; optional
+        donations are collected on itch.io.
+      </p>
+    </header>
+    <ul class="games">
+      {
+        GAMES.map((game, i) => (
+          <GameCard game={game} index={i} featured={i === 0}>
+            {game.id === "baaalance" && <BaaalanceCover slot="cover" />}
+          </GameCard>
+        ))
+      }
+    </ul>
+
+    <section class="support" id="support" aria-labelledby="support-heading">
+      <h2 class="label" id="support-heading">Support &amp; payments</h2>
+      <p class="lede">
+        This is the business website for games by {SITE.name}, the sole
+        operator. The games listed above are free to play in a browser.
+        Optional donations are accepted on itch.io and processed by Stripe.
+        There are no subscriptions and no physical goods.
+      </p>
+
+      <div class="policies">
+        <article>
+          <h3>Customer service</h3>
+          <p>
+            Email{" "}
+            <a href={`mailto:${SITE.email}`}>{SITE.email}</a> for support,
+            refunds, or questions about the games. I read everything and reply
+            as soon as I can.
+          </p>
+        </article>
+        <article>
+          <h3>What you can pay for</h3>
+          <p>
+            Nothing is required to play. A donation or purchase on itch.io is a
+            one-time payment; the amount is chosen there.{" "}
+            {
+              itchGames.map((game, i) => (
+                <>
+                  {i > 0 ? " " : null}
+                  Play and donate for {game.name} at{" "}
+                  <a
+                    href={game.playUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {game.playUrl?.replace(/^https:\/\//, "")}
+                  </a>
+                  .
+                </>
+              ))
+            }
+          </p>
+        </article>
+        <article>
+          <h3>Refund policy</h3>
+          <p>
+            Email{" "}
+            <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with your
+            itch.io username and the approximate date of the payment. I will
+            refund eligible charges. itch.io may also issue refunds under their
+            own terms.
+          </p>
+        </article>
+        <article>
+          <h3>Return policy</h3>
+          <p>
+            No physical goods are sold, shipped, or returned. Games are digital
+            and played in the browser, so there is no return-by-mail process.
+          </p>
+        </article>
+        <article>
+          <h3>Cancelation policy</h3>
+          <p>
+            There are no recurring charges or subscriptions to cancel. A
+            donation or itch.io payment is complete when it is processed.
+          </p>
+        </article>
+        <article>
+          <h3>Legal</h3>
+          <p>
+            Digital games only, available worldwide. No export-restricted
+            goods. No promotional terms apply unless stated on a game&rsquo;s
+            own page. This site does not process card payments; itch.io and
+            Stripe do.
+          </p>
+        </article>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: clamp(2rem, 8vw, 5rem) clamp(2rem, 5vw, 3rem);
+  }
+
+  .page-header .label {
+    margin-block-end: 0.75rem;
+  }
+
+  h1 {
+    font-size: clamp(2.75rem, 10vw, 5.5rem);
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-block-end: 1rem;
+  }
+
+  .page-header p {
+    color: var(--color-muted);
+    max-width: 50ch;
+  }
+
+  .games {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+  }
+
+  /* GameCard's <li> is a different Astro scope, so :global is required. */
+  @media (min-width: 64em) {
+    .games {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .games :global(li.featured),
+    .games :global(li:first-child) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .support {
+    margin-block-start: var(--space-section);
+    padding-block: var(--space-section) clamp(2rem, 6vw, 4rem);
+    border-block-start: 1px solid var(--color-line);
+  }
+
+  .support .lede {
+    color: var(--color-muted);
+    max-width: 58ch;
+    margin-block-end: 2.5rem;
+  }
+
+  .policies {
+    display: grid;
+    gap: 1.75rem 2.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .policies h3 {
+    font-family: var(--font-ui);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-block-end: 0.45rem;
+  }
+
+  .policies p {
+    color: var(--color-muted);
+    font-size: 0.9375rem;
+    max-width: 46ch;
+  }
+
+  @media (min-width: 48em) {
+    .policies {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

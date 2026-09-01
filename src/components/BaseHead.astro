@@ -12,6 +12,7 @@ interface Props {
   publishedTime?: Date;
   updatedTime?: Date;
   noindex?: boolean;
+  themeColor?: string;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   publishedTime,
   updatedTime,
   noindex = false,
+  themeColor,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -34,6 +36,7 @@ const ogImageAbs = new URL(ogImage, Astro.site);
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 {noindex && <meta name="robots" content="noindex" />}
+{themeColor && <meta name="theme-color" content={themeColor} />}
 
 <link rel="icon" href="/favicon.ico" sizes="32x32" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

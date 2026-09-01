@@ -29,3 +29,19 @@
   --radius-pill: 999px;
   --radius-box: 0.5rem;
 }
+
+/* Soft charcoal, same warm hue as the light theme — not pure black. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: oklch(0.2 0.008 96);
+  --color-ink: oklch(0.94 0.006 96);
+  --color-muted: oklch(0.78 0.008 96);
+  --color-soft: oklch(0.72 0.008 96);
+  --color-line: oklch(0.34 0.008 96);
+  --color-panel: oklch(0.25 0.008 96);
+  --color-pill: oklch(0.94 0.006 96);
+  --color-pill-ink: oklch(0.2 0.008 96);
+  --color-error: oklch(0.76 0.16 27);
+  --color-ok: oklch(0.78 0.12 150);
+  --color-focus: oklch(0.74 0.14 255);
+}
